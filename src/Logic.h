@@ -33,8 +33,8 @@ public:
     void InitializeNPCs(const json::Array& npcs);
     void InitializePlayers(const json::Array& players, int maxPlayers);
     
-    CMonsterAI& CreateNPC(const std::string& typeID, const C2DPosition& pos);
-    CPlayer& CreatePlayer(const std::string& typeID, const C2DPosition& pos, int playerNr);
+    CMonsterAI& CreateNPC(const std::string& typeID, const C2DPosition<>& pos);
+    CPlayer& CreatePlayer(const std::string& typeID, const C2DPosition<>& pos, int playerNr);
     
     void ClearTrash();
     void ClearCellTypes();

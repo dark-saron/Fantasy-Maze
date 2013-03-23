@@ -21,7 +21,7 @@ public:
     int GetLevelExp();
     bool Killed(const CCharactereWorld& charactere);
     void LevelUp(int levelUp = 1);
-    bool Move(const C2DPosition& newpos);
+    bool Move(const C2DPosition<>& newpos);
 
     void SetHealth(int health);
     void SetMana(int mana);

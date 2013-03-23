@@ -36,22 +36,22 @@ void CMonsterAI::Update(int timeLeft)
     int move = CRandom::RandRange(0, 4);
 
     CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (_charactere->GetWorldEntity());
-    C2DPosition charPosition = charWorld->GetPosition();
+    C2DPosition<> charPosition = charWorld->GetPosition();
     
     //switch control to set the next position for the monster if possible
     switch (move)
     {
         case(0):
-            _charactere->Move(C2DPosition(0, 1) + charPosition);
+            _charactere->Move(C2DPosition<>(0, 1) + charPosition);
             break;
         case(1):
-            _charactere->Move(C2DPosition(0, -1) + charPosition);
+            _charactere->Move(C2DPosition<>(0, -1) + charPosition);
             break;
         case(2):
-            _charactere->Move(C2DPosition(1, 0) + charPosition);
+            _charactere->Move(C2DPosition<>(1, 0) + charPosition);
             break;
         case(3):
-            _charactere->Move(C2DPosition(-1, 0) + charPosition);
+            _charactere->Move(C2DPosition<>(-1, 0) + charPosition);
             break;
     }
     _lastAction = 0;

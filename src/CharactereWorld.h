@@ -21,7 +21,7 @@ public:
     
     //constructor/destructors
     CCharactereWorld();
-    CCharactereWorld(const C2DPosition &pos, int health, int mana, CCharactereWorld::EType team);
+    CCharactereWorld(const C2DPosition<> &pos, int health, int mana, CCharactereWorld::EType team);
     ~CCharactereWorld();
     
     //setter/getter
@@ -38,7 +38,7 @@ public:
     int GetMaxHealth() const;
     int GetMaxMana() const;
     int GetNeedExpTillLvlUp() const;
-    const C2DPosition& GetPosition() const;
+    const C2DPosition<>& GetPosition() const;
     int GetViewRange() const;
     EType GetTeam() const;
 
@@ -49,7 +49,7 @@ public:
     void SetIncDefence(int incDef);
     void SetIncHealth(int incHealth);
     void SetIncMana(int incMana);
-    void SetPosition(const C2DPosition& pos);
+    void SetPosition(const C2DPosition<>& pos);
     void SetViewRange(int view);
     void SetTeam(EType team);
     
@@ -66,12 +66,12 @@ public:
     void AddMaxMana(int mana);
     void AddNeedExpTillLvlUp(int exp);
     bool IsDead() const;
-    bool InArea(const C2DPosition& start, const C2DPosition& end) const;
+    bool InArea(const C2DPosition<>& start, const C2DPosition<>& end) const;
     CCharactereWorld* GetVisibleCharacters();
 
 private:
     
-    C2DPosition _pos;
+    C2DPosition<> _pos;
 
     int _currentHealth;
     int _currentMana;

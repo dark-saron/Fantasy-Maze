@@ -31,7 +31,7 @@ private:
     static const int ROWS = 17;
 
     void DrawCell(int x, int y, const QPixmap& pixmap);
-    void DrawCell(const C2DPosition& pos, const QPixmap& pixmap);
+    void DrawCell(const C2DPosition<>& pos, const QPixmap& pixmap);
 
     void DrawPlayerView(int playerNr);
     void DrawPlayerView(CCharactereWorld* player);

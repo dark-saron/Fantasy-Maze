@@ -24,16 +24,16 @@ CRegion::~CRegion()
 }
 
 //return specific cell in the array
-const CCellTypeWorld* CRegion::GetCell(const C2DPosition& pos) const
+const CCellTypeWorld* CRegion::GetCell(const C2DPosition<>& pos) const
 {
-    int cellX = pos.GetXPos() % MAX_X;
-    int cellY = pos.GetYPos() % MAX_Y;
+    int cellX = pos[0] % MAX_X;
+    int cellY = pos[1] % MAX_Y;
     
     return _cells[cellX][cellY];
 }
 
 //gets all characters in the area(regions) of the given positions
-CCharactereWorld* CRegion::GetCharactersInArea(const C2DPosition& start, const C2DPosition& end)
+CCharactereWorld* CRegion::GetCharactersInArea(const C2DPosition<>& start, const C2DPosition<>& end)
 {
     CCharactereWorld* first = 0;
     CCharactereWorld* last = 0;

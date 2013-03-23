@@ -20,13 +20,13 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update(int timeLeft)
 {
-    C2DPosition move;
+    C2DPosition<> move;
     switch(_input)
     {
-        case(SDirection::east):  move = C2DPosition(0,-1); break;
-        case(SDirection::west):  move = C2DPosition(0,1); break;
-        case(SDirection::north): move = C2DPosition(-1,0); break;
-        case(SDirection::south): move = C2DPosition(1,0); break;
+        case(SDirection::east):  move = C2DPosition<>(0,-1); break;
+        case(SDirection::west):  move = C2DPosition<>(0,1); break;
+        case(SDirection::north): move = C2DPosition<>(-1,0); break;
+        case(SDirection::south): move = C2DPosition<>(1,0); break;
         default: return;
     }
     CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (_charactere->GetWorldEntity());

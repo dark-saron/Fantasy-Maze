@@ -4,7 +4,7 @@
 
 CCharactereWorld::CCharactereWorld()
                  : CWorldEntity(),
-                   _pos(C2DPosition(0, 0)),
+                   _pos(C2DPosition<>(0, 0)),
                    _currentHealth(1),
                    _currentMana(1),
                    _defense(0),
@@ -94,7 +94,7 @@ int CCharactereWorld::GetNeedExpTillLvlUp() const
     return _expTillNextLevel;
 }
 
-const C2DPosition& CCharactereWorld::GetPosition() const
+const C2DPosition<>& CCharactereWorld::GetPosition() const
 {
     return _pos;
 }
@@ -180,7 +180,7 @@ void CCharactereWorld::AddNeedExpTillLvlUp(int exp)
     _expTillNextLevel += exp;
 }
 
-void CCharactereWorld::SetPosition(const C2DPosition& pos)
+void CCharactereWorld::SetPosition(const C2DPosition<>& pos)
 {
     CDungeon::GetInstance().CharactereMove(*this, _pos, pos);
     _pos = pos;
@@ -201,17 +201,17 @@ bool CCharactereWorld::IsDead() const
     return (_currentHealth <= 0);
 }
 
-bool CCharactereWorld::InArea(const C2DPosition& start, const C2DPosition& end) const
+bool CCharactereWorld::InArea(const C2DPosition<>& start, const C2DPosition<>& end) const
 {
-    return (start.GetXPos() <= _pos.GetXPos() && _pos.GetXPos() <= end.GetXPos() &&
-            start.GetYPos() <= _pos.GetYPos() && _pos.GetYPos() <= end.GetYPos());
+    return (start[0] <= _pos[0] && _pos[0] <= end[0] &&
+            start[1] <= _pos[1] && _pos[1] <= end[1]);
 }
 
 CCharactereWorld* CCharactereWorld::GetVisibleCharacters() 
 {
     
-    C2DPosition posBegin = this->GetPosition() - this->GetViewRange();
-    C2DPosition posEnd   = this->GetPosition() + this->GetViewRange();
+    C2DPosition<> posBegin = this->GetPosition() - this->GetViewRange();
+    C2DPosition<> posEnd   = this->GetPosition() + this->GetViewRange();
              
     return CDungeon::GetInstance().GetCharactersInArea(posBegin, posEnd); 
 }

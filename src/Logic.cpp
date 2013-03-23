@@ -254,7 +254,7 @@ void CLogic::InitializePlayers(const json::Array& players, int maxPlayers)
     for (; iter != iterEnd && playerNr < maxPlayers; ++iter)
     {
         const json::Object& data = *iter;
-        C2DPosition pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
+        C2DPosition<> pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
 
         CreatePlayer(static_cast<json::String> (data["ID"]), pos, playerNr);
         ++playerNr;
@@ -268,7 +268,7 @@ void CLogic::InitializeNPCs(const json::Array& npcs)
     for (; iter != iterEnd; ++iter)
     {
         const json::Object& data = *iter;
-        C2DPosition pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
+        C2DPosition<> pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
         
         CreateNPC(static_cast<json::String> (data["ID"]), pos);
     }
@@ -277,7 +277,7 @@ void CLogic::InitializeNPCs(const json::Array& npcs)
 
 // creates and returns a player
 // if the playerNr is already taken, it will set the position and return the existing player instead of creating a new one
-CPlayer& CLogic::CreatePlayer(const std::string& typeID, const C2DPosition& pos, int playerNr)
+CPlayer& CLogic::CreatePlayer(const std::string& typeID, const C2DPosition<>& pos, int playerNr)
 {
     CCharactereLogic* charLogic = 0;
     CCharactereWorld* charWorld = 0;
@@ -307,7 +307,7 @@ CPlayer& CLogic::CreatePlayer(const std::string& typeID, const C2DPosition& pos,
 }
 
 // creates and returns an AI for an NPC
-CMonsterAI& CLogic::CreateNPC(const std::string& typeID, const C2DPosition& pos)
+CMonsterAI& CLogic::CreateNPC(const std::string& typeID, const C2DPosition<>& pos)
 {
     const json::Object& obj = CConfig::GetInstance().GetCharactereType(typeID);
     CCharactereLogic* charLogic = 0;

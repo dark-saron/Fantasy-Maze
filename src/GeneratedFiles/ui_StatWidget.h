@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StatWidget.ui'
 **
-** Created: Tue 19. Mar 14:33:29 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created: Sat 23. Mar 11:07:39 2013
+**      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/

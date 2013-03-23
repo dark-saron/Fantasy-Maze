@@ -40,14 +40,14 @@ int CDungeon::GetAmountRegionY() const
 }
 
 //gets the ref of a specific cell from a given position out of the region_array
-const CCellTypeWorld& CDungeon::GetCell(const C2DPosition& pos) const
+const CCellTypeWorld& CDungeon::GetCell(const C2DPosition<>& pos) const
 {
-    int regionX = pos.GetXPos() / CRegion::GetSizeX();
-    int regionY = pos.GetYPos() / CRegion::GetSizeY();
+    int regionX = pos[0] / CRegion::GetSizeX();
+    int regionY = pos[1] / CRegion::GetSizeY();
     const CCellTypeWorld* ret = 0;
     
-    if (pos.GetXPos() >= 0 && GetSizeX() > pos.GetXPos() &&
-        pos.GetYPos() >= 0 && GetSizeY() > pos.GetYPos() &&
+    if (pos[0] >= 0 && GetSizeX() > pos[0] &&
+        pos[1] >= 0 && GetSizeY() > pos[1] &&
         regionX >= 0 && regionX < AMOUNT_REGION_X &&
         regionY >= 0 && regionY < AMOUNT_REGION_Y)
         ret = _regions[regionX][regionY].GetCell(pos);
@@ -58,19 +58,19 @@ const CCellTypeWorld& CDungeon::GetCell(const C2DPosition& pos) const
     return *ret;
 }
 
-CCharactereWorld* CDungeon::GetCharacters(const C2DPosition& pos)
+CCharactereWorld* CDungeon::GetCharacters(const C2DPosition<>& pos)
 {
     return GetCharactersInArea(pos, pos);
 }
 
 //the characters in a specific region get read out
-CCharactereWorld* CDungeon::GetCharactersInArea(const C2DPosition& start, const C2DPosition& end)
+CCharactereWorld* CDungeon::GetCharactersInArea(const C2DPosition<>& start, const C2DPosition<>& end)
 {
-    int startRegionX = start.GetXPos() / CRegion::GetSizeX();
-    int startRegionY = start.GetYPos() / CRegion::GetSizeY();
+    int startRegionX = start[0] / CRegion::GetSizeX();
+    int startRegionY = start[1] / CRegion::GetSizeY();
 
-    int endRegionX = end.GetXPos() / CRegion::GetSizeX();
-    int endRegionY = end.GetYPos() / CRegion::GetSizeY();
+    int endRegionX = end[0] / CRegion::GetSizeX();
+    int endRegionY = end[1] / CRegion::GetSizeY();
     
     CWorldEntity* first = 0;
     CWorldEntity* temp = 0;
@@ -109,7 +109,7 @@ CCharactereWorld* CDungeon::GetCharactersInArea(const C2DPosition& start, const 
 
 CCharactereWorld* CDungeon::GetAllCharacters()
 {
-    return GetCharactersInArea(C2DPosition(0,0), GetSize());
+    return GetCharactersInArea(C2DPosition<>(0,0), GetSize());
 }
 
 //get dungeon level
@@ -118,9 +118,9 @@ int CDungeon::GetLevel() const
     return _level;
 }
 
-const C2DPosition CDungeon::GetSize()
+const C2DPosition<> CDungeon::GetSize()
 {
-    return C2DPosition(GetSizeX(), GetSizeY());
+    return C2DPosition<>(GetSizeX(), GetSizeY());
 }
 
 //size of the dungeons in X
@@ -160,30 +160,30 @@ bool CDungeon::Load(const json::Array& regions, int level) //file read how the l
 
 void CDungeon::AddCharactere(CCharactereWorld& charactere)
 {
-    const C2DPosition& pos = charactere.GetPosition();
-    int regionX = pos.GetXPos() / CRegion::GetSizeX();
-    int regionY = pos.GetYPos() / CRegion::GetSizeY();
+    const C2DPosition<>& pos = charactere.GetPosition();
+    int regionX = pos[0] / CRegion::GetSizeX();
+    int regionY = pos[1] / CRegion::GetSizeY();
     
     _regions[regionX ][regionY].AddCharactere(charactere);
 }
 
 void CDungeon::RemoveCharactere(CCharactereWorld& charactere)
 {
-    const C2DPosition& pos = charactere.GetPosition();
-    int regionX = pos.GetXPos() / CRegion::GetSizeX();
-    int regionY = pos.GetYPos() / CRegion::GetSizeY();
+    const C2DPosition<>& pos = charactere.GetPosition();
+    int regionX = pos[0] / CRegion::GetSizeX();
+    int regionY = pos[1] / CRegion::GetSizeY();
     
     _regions[regionX ][regionY].RemoveCharactere(charactere);
 }
 
 //moves player from one region to the next if player gets out of the current region s/he is in
-void CDungeon::CharactereMove(CCharactereWorld& charactere, const C2DPosition& oldPos, const C2DPosition& newPos)
+void CDungeon::CharactereMove(CCharactereWorld& charactere, const C2DPosition<>& oldPos, const C2DPosition<>& newPos)
 {
-    int oldRegionX = oldPos.GetXPos() / CRegion::GetSizeX();
-    int oldRegionY = oldPos.GetYPos() / CRegion::GetSizeY();
+    int oldRegionX = oldPos[0] / CRegion::GetSizeX();
+    int oldRegionY = oldPos[1] / CRegion::GetSizeY();
 
-    int newRegionX = newPos.GetXPos() / CRegion::GetSizeX();
-    int newRegionY = newPos.GetYPos() / CRegion::GetSizeY();
+    int newRegionX = newPos[0] / CRegion::GetSizeX();
+    int newRegionY = newPos[1] / CRegion::GetSizeY();
 
     if (oldRegionX != newRegionX || oldRegionY != newRegionY)
     {

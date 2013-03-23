@@ -1,54 +1,103 @@
 #include "2DPosition.h"
 
 
-C2DPosition::C2DPosition()
-            : _posX(0), _posY(0)
+C2DPosition<>::C2DPosition()
+{
+	_pos[0] = 0;
+	_pos[1] = 0;
+}
+
+C2DPosition<>::C2DPosition(int x,int y)
+{
+	_pos[0] = x;
+	_pos[1] = y;
+}
+
+C2DPosition<>::~C2DPosition()
 {
 }
 
-C2DPosition::C2DPosition(int x,int y)
-            : _posX(x), _posY(y)
+// -----------------------------------------------------------------------------
+
+C2DPosition<>& C2DPosition<>::operator = (const C2DPosition<>& pos)
 {
+	_pos[0] = pos._pos[0];
+	_pos[1] = pos._pos[1];
+	
+	return *this;
 }
 
-C2DPosition::~C2DPosition()
+// -----------------------------------------------------------------------------
+
+int& C2DPosition<>::operator[](const int Index)
 {
+	return _pos[Index];
 }
 
-int C2DPosition::GetXPos() const
+const int& C2DPosition<>::operator[](const int Index) const
 {
-    return _posX;
+	return _pos[Index];
 }
 
-int C2DPosition::GetYPos() const
+C2DPosition<> C2DPosition<>::operator+(const C2DPosition& value) const
 {
-    return _posY;
+    return C2DPosition(_pos[0] + value._pos[0], _pos[1] + value._pos[1]);
 }
 
-void C2DPosition::SetXPos(int x)
+C2DPosition<> C2DPosition<>::operator+(const int value) const
 {
-    _posX = x;
+    return C2DPosition(_pos[0] + value,
+                       _pos[1] + value);
 }
 
-void C2DPosition::SetYPos(int y)
+C2DPosition<> C2DPosition<>::operator-(const int value) const
 {
-    _posY = y;
+    return C2DPosition(_pos[0] - value,
+                       _pos[1] - value);
 }
 
-C2DPosition C2DPosition::operator+(const C2DPosition& value) const
+// -----------------------------------------------------------------------------
+
+C2DPosition<>& C2DPosition<>::operator += (const C2DPosition<>& pos)
 {
-    return C2DPosition(GetXPos() + value.GetXPos(),
-                       GetYPos() + value.GetYPos());
+	_pos[0] += pos._pos[0];
+	_pos[1] += pos._pos[1];
+	
+	return *this;
 }
 
-C2DPosition C2DPosition::operator+(const int value) const
+// -----------------------------------------------------------------------------
+
+C2DPosition<>& C2DPosition<>::operator -= (const C2DPosition<>& pos)
 {
-    return C2DPosition(GetXPos() + value,
-                       GetYPos() + value);
+	_pos[0] -= pos._pos[0];
+	_pos[1] -= pos._pos[1];
+	
+	return *this;
 }
 
-C2DPosition C2DPosition::operator-(const int value) const
+// -----------------------------------------------------------------------------
+
+C2DPosition<>& C2DPosition<>::operator *= (float scalar)
 {
-    return C2DPosition(GetXPos() - value,
-                       GetYPos() - value);
+	_pos[0] *= scalar;
+	_pos[1] *= scalar;
+	
+	return *this;
 }
+
+
+// -----------------------------------------------------------------------------
+
+C2DPosition<> C2DPosition<>::operator - (const C2DPosition<>& pos) const
+{
+	return C2DPosition<>(_pos[0] - pos._pos[0], _pos[1] - pos._pos[1]);
+}
+
+// -----------------------------------------------------------------------------
+
+C2DPosition<> C2DPosition<>::operator * (float scalar) const
+{
+	return C2DPosition(_pos[0] * scalar, _pos[1] * scalar);
+}
+

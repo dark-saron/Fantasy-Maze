@@ -16,9 +16,9 @@ class CRegion
         ~CRegion();
 
         //getter/setter
-        const CCellTypeWorld* GetCell(const C2DPosition& pos) const;
-        CCharactereWorld* GetCharacters(const C2DPosition& pos);
-        CCharactereWorld* GetCharactersInArea(const C2DPosition& start, const C2DPosition& end);
+        const CCellTypeWorld* GetCell(const C2DPosition<>& pos) const;
+        CCharactereWorld* GetCharacters(const C2DPosition<>& pos);
+        CCharactereWorld* GetCharactersInArea(const C2DPosition<>& start, const C2DPosition<>& end);
 
         //functions
         void AddCharactere(CCharactereWorld& charactere);

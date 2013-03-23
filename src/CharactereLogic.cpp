@@ -82,7 +82,7 @@ bool CCharactereLogic::Killed(const CCharactereWorld& charactere)
 }
 
 //true is only returned if the user changes position
-bool CCharactereLogic::Move(const C2DPosition& newPos)
+bool CCharactereLogic::Move(const C2DPosition<>& newPos)
 {
     CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (this->GetWorldEntity());
     CCharactereWorld* regionChar = CDungeon::GetInstance().GetCharacters(newPos);

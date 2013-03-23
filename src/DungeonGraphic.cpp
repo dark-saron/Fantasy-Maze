@@ -63,9 +63,9 @@ void CDungeonGraphic::Reset()
     }
 }
 
-void CDungeonGraphic::DrawCell(const C2DPosition& pos, const QPixmap& pixmap)
+void CDungeonGraphic::DrawCell(const C2DPosition<>& pos, const QPixmap& pixmap)
 {
-    DrawCell(pos.GetXPos(), pos.GetYPos(), pixmap);
+    DrawCell(pos[0], pos[1], pixmap);
 }
 
 void CDungeonGraphic::DrawCell(int x, int y, const QPixmap& pixmap)
@@ -99,14 +99,14 @@ void CDungeonGraphic::DrawPlayerView(CCharactereWorld* playerWorld)
 {
     if(!playerWorld) return;
 
-    C2DPosition pos      = playerWorld->GetPosition() - playerWorld->GetViewRange();
-    C2DPosition posRange = playerWorld->GetPosition() + playerWorld->GetViewRange();
+    C2DPosition<> pos      = playerWorld->GetPosition() - playerWorld->GetViewRange();
+    C2DPosition<> posRange = playerWorld->GetPosition() + playerWorld->GetViewRange();
     
-    for (int x = pos.GetXPos(); x <= posRange.GetXPos(); ++x)
+    for (int x = pos[0]; x <= posRange[0]; ++x)
     {
-        for (int y = pos.GetYPos(); y <= posRange.GetYPos(); ++y)
+        for (int y = pos[1]; y <= posRange[1]; ++y)
         {
-            const CCellTypeWorld& cellTypeWorld = CDungeon::GetInstance().GetCell(C2DPosition(x, y));
+            const CCellTypeWorld& cellTypeWorld = CDungeon::GetInstance().GetCell(C2DPosition<>(x, y));
             CCellTypeGraphic& cellTypeGraphic = CGraphic::GetInstance().GetCellType(cellTypeWorld);
             
             DrawCell(x, y, cellTypeGraphic.Draw());
