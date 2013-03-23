@@ -2,10 +2,8 @@
 
 class C2DPosition
 {
-
 public:
-    
-	//constructor/destructor
+    //constructor/destructor
     C2DPosition(void);
     C2DPosition(int x,int y);
     ~C2DPosition(void);
@@ -22,9 +20,7 @@ public:
     C2DPosition operator-(const int value) const;
 
 private:
-
-	int _posX;
+    int _posX;
     int _posY;
-
 };
 

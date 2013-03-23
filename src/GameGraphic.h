@@ -2,6 +2,7 @@
 
 #include "Widget.h"
 #include "ui_GameWidget.h"
+
 class CStatsGraphic;
 class CDungeonGraphic;
 

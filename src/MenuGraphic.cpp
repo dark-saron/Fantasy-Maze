@@ -1,13 +1,16 @@
 #include "MenuGraphic.h"
 
-#include "Logic.h"
 #include "Graphic.h"
+#include "Connector.h"
+#include "Logic.h"
 
 CMenuGraphic::CMenuGraphic()
 {
     _ui = new Ui::MenuWidget();
     _ui->setupUi(this);
+    _ui->_continueBtn->hide();
     QObject::connect(_ui->_singleStartBtn, SIGNAL(clicked()), this, SLOT(OnSingleStartButton()));
+    QObject::connect(_ui->_continueBtn, SIGNAL(clicked()), this, SLOT(OnContinueButton()));
     QObject::connect(_ui->_multiStartBtn, SIGNAL(clicked()), this, SLOT(OnMultiStartButton()));
     QObject::connect(_ui->_endBtn, SIGNAL(clicked()), this, SLOT(OnExitGameButton()));
     
@@ -27,27 +30,38 @@ void CMenuGraphic::Start()
 {
 }
 
+void CMenuGraphic::ShowBtn()
+{
+
+	_ui->_loadBtn->hide();
+	_ui->_continueBtn->show();
+
+}
+
+
 void CMenuGraphic::Draw()
 {
+	if(CLogic::GetInstance().GetPlayer(0))
+		ShowBtn();
+}
+
+void CMenuGraphic::OnContinueButton()
+{
+    CConnector::GetInstance().ContinueGame();
 }
 
 void CMenuGraphic::OnSingleStartButton()
 {
-    int level = 1;
-    int players = 1;
-    CLogic::GetInstance().StartLevel(level, players, true);
-    CGraphic::GetInstance().SetAction(CGraphic::startGame);
+    CConnector::GetInstance().StartGame(false);
 }
 
 void CMenuGraphic::OnMultiStartButton()
 {
-    int level = 1;
-    int players = 2;
-    CLogic::GetInstance().StartLevel(level, players, true);
-    CGraphic::GetInstance().SetAction(CGraphic::startGame);
+    CConnector::GetInstance().StartGame(true);
 }
 
 void CMenuGraphic::OnExitGameButton()
 {
-    CGraphic::GetInstance().SetExit();
+    CGraphic::GetInstance().Exit();
+    CConnector::GetInstance().Exit();
 }

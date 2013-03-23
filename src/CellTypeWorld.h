@@ -6,20 +6,22 @@
 
 class CCellTypeWorld : public CWorldEntity
 {
-
 public:
-
-	//functions
-	~CCellTypeWorld();
+    //constructor/destructor
     CCellTypeWorld();
-	bool IsSolid() const;
+    ~CCellTypeWorld();
 
     //setter/getter
     char GetType() const;
+
     void SetSolid(bool value);
     void SetType(char value);
     
+    bool IsSolid() const;
+
+
     
+
 private:
     
     bool GetAttribute(int flag) const;
@@ -28,12 +30,11 @@ private:
     void SetAttributes(int attributes);
 
     // Flags für die Attribute
-    static const int BREAKABLE = 4;
-	static const int MOVABLE = 2;
     static const int SOLID = 1;
-    
+    static const int MOVABLE = 2;
+    static const int BREAKABLE = 4;
+
     int _attributes;
     char _type;
-
 };
 

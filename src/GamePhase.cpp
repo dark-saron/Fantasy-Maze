@@ -4,6 +4,7 @@
 #include "Logic.h"
 #include "Graphic.h"
 #include "Player.h"
+#include "Connector.h"
 
 CGamePhase::CGamePhase()
 {
@@ -52,19 +53,29 @@ CPhase::EType CGamePhase::Run(int timeLeft)
      
     //call of the Draw to refresh the dungeon grafic
     Draw();
-    CLogic::GetInstance().EventManager();
     
-    if (CLogic::GetInstance().GetExit())
-        return CPhase::exit;
-    else if(CLogic::GetInstance().GetPlayer(0)->GetInput() ==  SUserInput::back)
+
+    switch (CConnector::GetInstance().TakeAction())
     {
-        //TODO: change so the actions gets away
-        CGraphic::GetInstance().SetAction();
-        
+    case (CConnector::exit):
+        return CPhase::exit;
+
+    case (CConnector::back):
+        return CPhase::menu;
+
+    }
+
+    if(!CLogic::GetInstance().GetPlayer(0) && !CLogic::GetInstance().GetPlayer(0))
+    {
         return CPhase::menu;
     }
-    else
-        return CPhase::game;
+    else if(CLogic::GetInstance().GetNPCAmount() == 0)
+    {
+        CLogic& logic = CLogic::GetInstance();
+        int players = (logic.GetPlayer(0) != 0) + (logic.GetPlayer(1) != 0);
+        CLogic::GetInstance().StartLevel(CDungeon::GetInstance().GetLevel(), players, false);
+    }
 
+     return CPhase::game;
 }
 

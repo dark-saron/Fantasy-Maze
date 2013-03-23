@@ -14,7 +14,8 @@
 
 CLogic::CLogic()
       : _npcs(std::list<CMonsterAI*>()),
-        _trash(std::list<CWorldEntity*>()),
+        _cellTrash(std::list<CCellTypeLogic*>()),
+        _charTrash(std::list<CCharactereLogic*>()),
         _exit(false)
 {
     for (int player = 0; player < MAX_PLAYERS; ++player)
@@ -35,7 +36,7 @@ void CLogic::ClearNPCs()
         charLogic = &ai->GetCharactere();
         _npcs.pop_front();
         delete ai;
-        delete charLogic;
+        MoveToTrash(*charLogic);
     }
 }
 
@@ -45,32 +46,48 @@ void CLogic::ClearPlayers()
     {
         if (_players[playerNr])
         {
-            CCharactereLogic* charLogic = &_players[playerNr]->GetCharactere();
+            CCharactereLogic& charLogic = _players[playerNr]->GetCharactere();
             delete _players[playerNr];
             _players[playerNr] = 0;
-            charLogic->SetHealth(0);
-            MoveToTrash(charLogic->GetWorldEntity());
+            charLogic.SetHealth(0);
+            MoveToTrash(charLogic);
         }
     }
 }
 
 void CLogic::ClearCellTypes()
 {
-    CCellTypeWorld* cellTypeWorld = CDungeon::GetInstance().GetAllCellTypes();
-    IWorldIterator iter = IWorldIterator(cellTypeWorld);
+    CWorldEntity* cellTypeWorld = CDungeon::GetInstance().GetAllCellTypes();
+    CWorldEntity* next;
+    CWorldEntity* prev;
 
-    for (; iter.FirstLoop(); ++iter)
+    while (cellTypeWorld)
     {
-        delete (*iter)->GetLogicEntity();
+        next = cellTypeWorld->GetNext();
+        prev = cellTypeWorld->GetPrev();
+
+        CCellTypeLogic* cellLogic = static_cast<CCellTypeLogic*> (cellTypeWorld->GetLogicEntity());
+        MoveToTrash(*cellLogic);
+
+        cellTypeWorld = next;
     }
 }
 
-void CLogic::MoveToTrash(CWorldEntity* worldEntity)
+void CLogic::MoveToTrash(CCharactereLogic& charLogic)
 {
-    if (worldEntity->GetGraphicEntity())
-        _trash.push_back(worldEntity);
+    if (charLogic.GetWorldEntity()->GetGraphicEntity())
+        _charTrash.push_back(&charLogic);
     else
-        delete (CCharactereLogic*) worldEntity->GetLogicEntity();
+        delete &charLogic;
+
+}
+
+void CLogic::MoveToTrash(CCellTypeLogic& cellLogic)
+{
+    if (cellLogic.GetWorldEntity()->GetGraphicEntity())
+        _cellTrash.push_back(&cellLogic);
+    else
+        delete &cellLogic;
 
 }
 
@@ -87,26 +104,43 @@ void CLogic::Reset()
 
 CLogic::~CLogic()
 {
-    Reset();
+    ClearPlayers();
+    ClearNPCs();
     ClearCellTypes();
+    ClearTrash();
 }
 
 // goes through the trash and removes everything with no graphic entity
 void CLogic::ClearTrash()
 {
-    CWorldEntity* worldEntity;
-    std::list<CWorldEntity*>::const_iterator it = _trash.begin(); 
+    CCellTypeLogic* cellLogic;
+    std::list<CCellTypeLogic*>::const_iterator it1 = _cellTrash.begin(); 
     
-    while(it != _trash.end())
+    while(it1 != _cellTrash.end())
     {
-        worldEntity = (*it);
-        if (!worldEntity->GetGraphicEntity())
+        cellLogic = *it1;
+        if (!cellLogic->GetWorldEntity()->GetGraphicEntity())
         {
-            it = _trash.erase(it);
-            delete (CCharactereLogic*) worldEntity->GetLogicEntity();
+            it1 = _cellTrash.erase(it1);
+            delete cellLogic;
         }
         else
-            ++it;
+            ++it1;
+    }
+
+    CCharactereLogic* charLogic;
+    std::list<CCharactereLogic*>::const_iterator it2 = _charTrash.begin(); 
+    
+    while(it2 != _charTrash.end())
+    {
+        charLogic = *it2;
+        if (!charLogic->GetWorldEntity()->GetGraphicEntity())
+        {
+            it2 = _charTrash.erase(it2);
+            delete charLogic;
+        }
+        else
+            ++it2;
     }
 }
 
@@ -121,12 +155,12 @@ void CLogic::RemoveDeadEntities()
             continue;
 
         charLogic = &_players[player]->GetCharactere();
-        charWorld = (CCharactereWorld*) charLogic->GetWorldEntity();
+        charWorld = static_cast<CCharactereWorld*> (charLogic->GetWorldEntity());
         if (charWorld->IsDead())
         {
             delete _players[player];
             _players[player] = 0;
-            MoveToTrash(charWorld);
+            MoveToTrash(*charLogic);
         }
     }
 
@@ -134,13 +168,13 @@ void CLogic::RemoveDeadEntities()
     while(it != _npcs.end())
     {
         charLogic  = &(*it)->GetCharactere();
-        charWorld = (CCharactereWorld*) charLogic->GetWorldEntity();
+        charWorld = static_cast<CCharactereWorld*> (charLogic->GetWorldEntity());
         
         if (charWorld->IsDead())
         {
             delete *it;
             it = _npcs.erase(it);
-            MoveToTrash(charWorld);
+            MoveToTrash(*charLogic);
         }
         else
             ++it;
@@ -167,7 +201,6 @@ bool CLogic::ComputeRound(int timeLeft)
 CPlayer* CLogic::GetPlayer(int player)
 {
     assert(player == 0 || player == 1);
-
     return _players[player];
 }
 
@@ -193,17 +226,17 @@ void CLogic::InitializeCellTypes(const json::Array& cellTypes)
     for (int index = 0; index < cellTypes.Size(); ++index)
     {
         const json::Object& cellType = cellTypes[index];
-        std::string type = (json::String) cellType["Type"];
+        std::string type = static_cast<json::String> (cellType["Type"]);
 
         CCellTypeLogic* cellTypeLogic = new CCellTypeLogic();
-        CCellTypeWorld* cellTypeWorld = (CCellTypeWorld*) cellTypeLogic->GetWorldEntity();
+        CCellTypeWorld* cellTypeWorld = static_cast<CCellTypeWorld*> (cellTypeLogic->GetWorldEntity());
         cellTypeWorld->SetLogicEntity(cellTypeLogic);
         
-        cellTypeWorld->SetTypeID((json::String) cellType["ID"]);
+        cellTypeWorld->SetTypeID(static_cast<json::String> (cellType["ID"]));
         cellTypeWorld->SetType(type[0]);
-        cellTypeWorld->SetSolid((json::Boolean) cellType["Solid"]);
+        cellTypeWorld->SetSolid(static_cast<json::Boolean> (cellType["Solid"]));
         
-        if ((json::Boolean) cellType["Standard"])
+        if (static_cast<json::Boolean> (cellType["Standard"]))
             CDungeon::GetInstance().SetStandardCellType(*cellTypeWorld);
     }
 }
@@ -221,9 +254,9 @@ void CLogic::InitializePlayers(const json::Array& players, int maxPlayers)
     for (; iter != iterEnd && playerNr < maxPlayers; ++iter)
     {
         const json::Object& data = *iter;
-        C2DPosition pos((json::Number) data ["X"], (json::Number) data ["Y"]);
+        C2DPosition pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
 
-        CreatePlayer((json::String) data["ID"], pos, playerNr);
+        CreatePlayer(static_cast<json::String> (data["ID"]), pos, playerNr);
         ++playerNr;
     }
 }
@@ -235,9 +268,9 @@ void CLogic::InitializeNPCs(const json::Array& npcs)
     for (; iter != iterEnd; ++iter)
     {
         const json::Object& data = *iter;
-        C2DPosition pos((json::Number) data ["X"], (json::Number) data ["Y"]);
-
-        CreateNPC((json::String) data["ID"], pos);
+        C2DPosition pos(static_cast<json::Number> (data["X"]), static_cast<json::Number> (data["Y"]));
+        
+        CreateNPC(static_cast<json::String> (data["ID"]), pos);
     }
 }
 
@@ -253,7 +286,7 @@ CPlayer& CLogic::CreatePlayer(const std::string& typeID, const C2DPosition& pos,
     {
         player = _players[playerNr];
         charLogic = &_players[playerNr]->GetCharactere();
-        charWorld = (CCharactereWorld*) charLogic->GetWorldEntity();
+        charWorld = static_cast<CCharactereWorld*> (charLogic->GetWorldEntity());
     }
     else
     {
@@ -262,7 +295,7 @@ CPlayer& CLogic::CreatePlayer(const std::string& typeID, const C2DPosition& pos,
         CPlayer* player = new CPlayer();
         player->SetCharactere(*charLogic);
 
-        charWorld = (CCharactereWorld*) charLogic->GetWorldEntity();
+        charWorld = static_cast<CCharactereWorld*> (charLogic->GetWorldEntity());
         const json::Object& obj = CConfig::GetInstance().GetCharactereType(typeID);
         charWorld->Load(obj);
         charWorld->SetTeam(CCharactereWorld::player0);
@@ -281,7 +314,7 @@ CMonsterAI& CLogic::CreateNPC(const std::string& typeID, const C2DPosition& pos)
     CCharactereWorld* charWorld = 0;
 
     charLogic = new CCharactereLogic();
-    charWorld = (CCharactereWorld*) charLogic->GetWorldEntity();
+    charWorld = static_cast<CCharactereWorld*> (charLogic->GetWorldEntity());
     charWorld->SetTeam(CCharactereWorld::monster);
 
     CMonsterAI* ai = new CMonsterAI();
@@ -296,38 +329,11 @@ CMonsterAI& CLogic::CreateNPC(const std::string& typeID, const C2DPosition& pos)
 }
 
 
-void CLogic::SetExit(bool exit)
-{
-    _exit = exit;
-}
-
-bool CLogic::GetExit() const
-{
-    return _exit;
-}
-
-
 int CLogic::GetNPCAmount()
 {
     return _npcs.size();
 }
 
-
-
-void CLogic::EventManager()
-{
-    if(!CLogic::GetInstance().GetPlayer(0))
-    {
-        ClearNPCs();
-        // TODO: Go to Menu
-    }
-    if(CLogic::GetInstance().GetNPCAmount() == 0)
-    {
-        CLogic& logic = CLogic::GetInstance();
-        int players = (logic.GetPlayer(0) != 0) + (logic.GetPlayer(1) != 0);
-        StartLevel(CDungeon::GetInstance().GetLevel(), players, false);
-    }
-}
 
 
 ///////////////////////////////////////////////////////////////

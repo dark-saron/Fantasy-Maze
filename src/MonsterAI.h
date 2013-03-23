@@ -7,19 +7,20 @@ class CMonsterAI
 
 public:
 
-    //functions
-    ~CMonsterAI();
+    //constructor/destructor
     CMonsterAI();
-    void Update(int timeLeft);
+    ~CMonsterAI();
 
     //getter/setter
     void SetCharactere(CCharactereLogic& charactere);
     CCharactereLogic& GetCharactere();
     
+    //functions
+    void Update(int timeLeft);
+    
 private:
-
-	CCharactereLogic* _charactere;
     int _lastAction;
+    CCharactereLogic* _charactere;
     
 };
 

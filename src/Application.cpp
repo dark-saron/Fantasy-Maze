@@ -1,6 +1,7 @@
 #include "Application.h"
 
 #include "Config.h"
+#include "Connector.h"
 #include "Dungeon.h"
 #include "Graphic.h"
 #include "Logic.h"
@@ -22,6 +23,8 @@ CApplication::CApplication()
     CConfig::CreateInstance();
     CConfig::GetInstance().LoadConfig();
 
+    CConnector::CreateInstance();
+
     CDungeon::CreateInstance();
     CLogic::CreateInstance();
     CGraphic::CreateInstance();
@@ -41,6 +44,8 @@ CApplication::~CApplication()
     CGraphic::DestroyInstance();
     CLogic::DestroyInstance();
     CDungeon::DestroyInstance();
+    
+    CConnector::DestroyInstance();
     CConfig::DestroyInstance();
 
 }

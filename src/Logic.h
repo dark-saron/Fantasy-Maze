@@ -14,12 +14,8 @@ class CPlayer;
 class CLogic
 {
 public:
-
-    bool GetExit() const;
-    void SetExit(bool exit);
     
     bool ComputeRound(int timeLeft);
-    void EventManager();
     void RemoveDeadEntities();
     void Reset();
 
@@ -29,7 +25,8 @@ public:
     void Start();
     bool StartLevel(int level, int maxPlayers, bool clearPlayers = true);
     
-    void MoveToTrash(CWorldEntity* worldEntity);
+    void MoveToTrash(CCellTypeLogic& cellLogic);
+    void MoveToTrash(CCharactereLogic& charLogic);
 
     void InitializeCellTypes(const json::Array& cellTypes);
     void InitializeDungeon(const json::Array& regions, int level);
@@ -59,7 +56,10 @@ private:
 
     CPlayer* _players[MAX_PLAYERS];
     std::list<CMonsterAI*> _npcs;
-    std::list<CWorldEntity*> _trash;
+
+    // TODO: vector instead of list?
+    std::list<CCharactereLogic*> _charTrash;
+    std::list<CCellTypeLogic*> _cellTrash;
 
     bool _exit;
 };

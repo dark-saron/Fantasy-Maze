@@ -1,13 +1,13 @@
 #include "DungeonGraphic.h"
 
-#include "WorldIterator.h"
-#include "Dungeon.h"
 #include "CellTypeWorld.h"
 #include "CellTypeGraphic.h"
-#include "Logic.h"
-#include "Player.h"
+#include "WorldIterator.h"
+
 #include "Config.h"
 #include "Graphic.h"
+#include "Dungeon.h"
+#include "Connector.h"
 
 #include <QWidget>
 #include <QImage>
@@ -91,15 +91,14 @@ void CDungeonGraphic::Draw()
 
 void CDungeonGraphic::DrawPlayerView(int playerNr)
 {
-    CPlayer* player = CLogic::GetInstance().GetPlayer(playerNr);
-    DrawPlayerView(player);
+    CCharactereWorld* charWorld = CConnector::GetInstance().GetPlayerCharactere(playerNr);
+    DrawPlayerView(charWorld);
 }
 
-void CDungeonGraphic::DrawPlayerView(CPlayer* player)
+void CDungeonGraphic::DrawPlayerView(CCharactereWorld* playerWorld)
 {
-    if(!player) return;
+    if(!playerWorld) return;
 
-    CCharactereWorld* playerWorld = (CCharactereWorld*) player->GetCharactere().GetWorldEntity();
     C2DPosition pos      = playerWorld->GetPosition() - playerWorld->GetViewRange();
     C2DPosition posRange = playerWorld->GetPosition() + playerWorld->GetViewRange();
     
@@ -107,7 +106,6 @@ void CDungeonGraphic::DrawPlayerView(CPlayer* player)
     {
         for (int y = pos.GetYPos(); y <= posRange.GetYPos(); ++y)
         {
-            // TODO: const_cast bescause you get just an const cellTypeWorld from the dungeon
             const CCellTypeWorld& cellTypeWorld = CDungeon::GetInstance().GetCell(C2DPosition(x, y));
             CCellTypeGraphic& cellTypeGraphic = CGraphic::GetInstance().GetCellType(cellTypeWorld);
             
@@ -120,7 +118,7 @@ void CDungeonGraphic::DrawPlayerView(CPlayer* player)
 
     for (; iter.FirstLoop(); ++iter)
     {
-        CCharactereWorld& charWorld = (CCharactereWorld&) *(*iter);
+        CCharactereWorld& charWorld = static_cast<CCharactereWorld&>(*(*iter));
         CCharactereGraphic& charGraphic = CGraphic::GetInstance().GetCharactere(charWorld);
         DrawCell(charWorld.GetPosition(), charGraphic.Draw());
     }

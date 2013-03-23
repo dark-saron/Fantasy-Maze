@@ -1,17 +1,15 @@
 #pragma once
 class SDirection
 {
-
 public:
-    
-	enum EType
+    enum EType
     {
         north,
         south,
         east,
         west,
-        none
+        none,
+        sizeOf
     };
-
 };
 

@@ -1,6 +1,7 @@
 #include "MenuPhase.h"
 
 #include "Dungeon.h"
+#include "Connector.h"
 #include "Logic.h"
 #include "Graphic.h"
 #include "MenuGraphic.h"
@@ -24,8 +25,7 @@ CPhase::EType CMenuPhase::GetPhase() const
 //calls the Start functions of the Logic/Graphic
 void CMenuPhase::Begin()
 {
-    if(CGraphic::GetInstance().GetWidget())
-        CGraphic::GetInstance().SetWidget(CWindowGraphic::menu);
+    CGraphic::GetInstance().SetWidget(CWindowGraphic::menu);
 }
 
 //draw phase of the menu (supposed to call the grafic draw the menu buttons (where later the dungeon will be displayed)
@@ -42,16 +42,17 @@ void CMenuPhase::End()
 //Run Phase goes till the user will chose either exit oder one of the game options 
 CPhase::EType CMenuPhase::Run(int timeLeft)
 {
-    switch(CGraphic::GetInstance().GetAction())
-    {
-    case CGraphic::none:
-        return CPhase::menu;
-    
-    case CGraphic::startGame:
+    switch(CConnector::GetInstance().TakeAction())
+    {    
+    case CConnector::game:
         return CPhase::game;
         
-    case CGraphic::exit:
+    case CConnector::exit:
         return CPhase::exit;
+    
+    case CConnector::back:
+        if (CLogic::GetInstance().GetPlayer(0))
+            return CPhase::game;
     }
 
     return CPhase::menu;

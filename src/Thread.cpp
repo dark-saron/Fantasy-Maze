@@ -26,8 +26,8 @@ void CThread::Start()
     _handle = CreateThread(
         0,      // default security attributes
         0,      // use default stack size  
-        reinterpret_cast<LPTHREAD_START_ROUTINE>(CThread::RunThread), // thread function name
-        static_cast<LPVOID>(this), // argument to thread function 
+        reinterpret_cast<LPTHREAD_START_ROUTINE> (CThread::RunThread), // thread function name
+        static_cast<LPVOID> (this), // argument to thread function 
         0,       // use default creation flags 
         &_thread);      // returns the thread identifier 
 }

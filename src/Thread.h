@@ -8,18 +8,17 @@ class CThread
 
 public:
         //constructor/destructor
+        CThread();
         ~CThread();
-        CThread();        
+        
         bool IsAlive();
-        static void RunThread(CThread* _pThread);
         void Start();
+        static void RunThread(CThread* _pThread);
         
 private:
+        virtual int Run() = 0;
         
-		virtual int Run() = 0;
-    
         bool _alive;
+        DWORD _thread;
         HANDLE _handle;
-		DWORD _thread;
-        
 };

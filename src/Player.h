@@ -1,6 +1,6 @@
 #pragma once
 #include "CharactereLogic.h"
-#include "UserInput.h"
+#include "Direction.h"
 
 class CPlayer
 {
@@ -9,14 +9,13 @@ public:
     ~CPlayer();
 
     CCharactereLogic& GetCharactere();
-    SUserInput::EType GetInput() const;
     void SetCharactere(CCharactereLogic& charactere);
 
     void Update(int timeLeft);
-    void SetInput(SUserInput::EType input);
+    void SetInput(SDirection::EType input);
 
 private:
     CCharactereLogic* _charactere;
-    SUserInput::EType _input;
+    SDirection::EType _input;
 };
 

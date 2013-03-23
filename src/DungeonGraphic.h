@@ -34,7 +34,7 @@ private:
     void DrawCell(const C2DPosition& pos, const QPixmap& pixmap);
 
     void DrawPlayerView(int playerNr);
-    void DrawPlayerView(CPlayer* player);
+    void DrawPlayerView(CCharactereWorld* player);
 
     QLabel* _cell[COLUMNS][ROWS];
     QWidget* _widget;

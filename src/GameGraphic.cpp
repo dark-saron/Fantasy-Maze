@@ -2,9 +2,13 @@
 #include "DungeonGraphic.h"
 #include "StatsGraphic.h"
 
-#include "Logic.h"
+#include "Connector.h"
 
 CGameGraphic::CGameGraphic()
+             : _ui(0),
+               _statsGraphic0(0),
+               _statsGraphic1(0),
+               _dungeonGraphic(0)
 {
     _ui = new Ui::_GameWidget();
 
@@ -16,7 +20,7 @@ CGameGraphic::CGameGraphic()
     _ui->horizontalLayout->addWidget(_dungeonGraphic);
     _ui->horizontalLayout->addWidget(_statsGraphic0);
 
-    if(CLogic::GetInstance().GetPlayer(1))
+    if(CConnector::GetInstance().GetPlayerCharactere(1))
     {
         _statsGraphic1 = new CStatsGraphic(1);
         _ui->horizontalLayout->addWidget(_statsGraphic1);
@@ -33,10 +37,8 @@ void CGameGraphic::Start()
     _dungeonGraphic->Start();
     _statsGraphic0->Start();
 
-    if(CLogic::GetInstance().GetPlayer(1))
-    {
+    if(_statsGraphic1)
         _statsGraphic1->Start();
-    }
 }
 
 void CGameGraphic::Reset()
@@ -49,8 +51,6 @@ void CGameGraphic::Draw()
     _dungeonGraphic->Draw();
     _statsGraphic0->Draw();
 
-    if(CLogic::GetInstance().GetPlayer(1))
-    {
+    if(_statsGraphic1)
         _statsGraphic1->Draw();
-    }
 }

@@ -21,6 +21,10 @@ void CWorldEntity::SetTypeID(const std::string& typeID)
 
 CWorldEntity::~CWorldEntity()
 {
+    if (GetNext())
+        GetNext()->SetPrev(0);
+    if (GetPrev())
+        GetPrev()->SetNext(0);
 }
 
 void* CWorldEntity::GetGraphicEntity()

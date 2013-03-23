@@ -7,16 +7,17 @@ class CMenuPhase : public CPhase
 
 public:
 
-    //functions
-    ~CMenuPhase();
+    //constructor/destructor
     CMenuPhase();
-    void Begin();
-    void Draw();
-    void End();
-    CPhase::EType Run(int timeLeft);
+    ~CMenuPhase();
 
     //setter/getter
     CPhase::EType GetPhase() const;
 
+    //functions
+    void Begin();
+    void Draw();
+    void End();
+    CPhase::EType Run(int timeLeft);
 };
 

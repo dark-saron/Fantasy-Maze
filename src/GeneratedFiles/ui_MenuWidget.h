@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MenuWidget.ui'
 **
-** Created: Thu 14. Mar 20:59:47 2013
-**      by: Qt User Interface Compiler version 4.8.3
+** Created: Tue 19. Mar 17:14:27 2013
+**      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -30,6 +30,7 @@ public:
     QLabel *label;
     QPushButton *_singleStartBtn;
     QPushButton *_multiStartBtn;
+    QPushButton *_continueBtn;
     QPushButton *_loadBtn;
     QPushButton *_endBtn;
 
@@ -51,10 +52,10 @@ public:
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(0, 0, 261, 501));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(30);
+        verticalLayout->setSpacing(10);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout->setContentsMargins(20, 10, 20, 20);
+        verticalLayout->setContentsMargins(20, 0, 20, 10);
         label = new QLabel(verticalLayoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Maximum);
@@ -97,6 +98,12 @@ public:
 
         verticalLayout->addWidget(_multiStartBtn);
 
+        _continueBtn = new QPushButton(verticalLayoutWidget);
+        _continueBtn->setObjectName(QString::fromUtf8("_continueBtn"));
+        _continueBtn->setFont(font1);
+
+        verticalLayout->addWidget(_continueBtn);
+
         _loadBtn = new QPushButton(verticalLayoutWidget);
         _loadBtn->setObjectName(QString::fromUtf8("_loadBtn"));
         _loadBtn->setFont(font1);
@@ -128,6 +135,7 @@ public:
         label->setText(QApplication::translate("MenuWidget", "Menu Fantasy Maze", 0, QApplication::UnicodeUTF8));
         _singleStartBtn->setText(QApplication::translate("MenuWidget", "Start Singleplayer", 0, QApplication::UnicodeUTF8));
         _multiStartBtn->setText(QApplication::translate("MenuWidget", "Start Multiplayer", 0, QApplication::UnicodeUTF8));
+        _continueBtn->setText(QApplication::translate("MenuWidget", "Continue", 0, QApplication::UnicodeUTF8));
         _loadBtn->setText(QApplication::translate("MenuWidget", "Load", 0, QApplication::UnicodeUTF8));
         _endBtn->setText(QApplication::translate("MenuWidget", "End Game", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

@@ -19,8 +19,10 @@ public:
     void Reset();
     void Start();
     void Draw();
+	void ShowBtn();
 
 private slots:
+    void OnContinueButton();
     void OnSingleStartButton();
     void OnMultiStartButton();
     void OnExitGameButton();

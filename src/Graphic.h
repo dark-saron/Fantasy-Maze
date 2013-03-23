@@ -1,39 +1,22 @@
 #pragma once
 
-#include "UserInput.h"
+#include "CellTypeGraphic.h"
+#include "CellTypeWorld.h"
+#include "CharactereGraphic.h"
+#include "CharactereWorld.h"
+#include "Direction.h"
 #include "Widget.h"
 #include "WindowGraphic.h"
-#include "CellTypeWorld.h"
-#include "CellTypeGraphic.h"
-
-#include "CharactereWorld.h"
-#include "CharactereGraphic.h"
 
 #include <QtGui/QApplication>
 #include <QObject>
 
-class CGraphic : QObject
+class CGraphic : public QObject
 {
 Q_OBJECT
 public:
-    enum EType
-    {
-        startGame,
-        none,
-        exit
-    };
-
-    enum EType2
-    {
-        menu,
-        game
-    };
-
-    EType GetAction();
     int Run();
     void RemoveDeadEntities();
-    void SetAction(EType action = none);
-    void SetExit();
     void SetWidget(CWindowGraphic::EType widget);
 
     void Draw();
@@ -43,7 +26,7 @@ public:
     CCellTypeGraphic& GetCellType(const CCellTypeWorld& constCellType);
     CCharactereGraphic& GetCharactere(CCharactereWorld& charWorld);
     const QPixmap& GetPixmap(const std::string& typeID);
-    CWidget* GetWidget() const;
+    void Exit();
 
      //singleton functions
     static void CreateInstance();
@@ -62,21 +45,16 @@ public slots:
   
 private:
 
-
-    EType _action;
-    CWindowGraphic::EType _setWidget;
-    EType2 _deWidget;
-
-    CWindowGraphic* _mainWindow;
     QApplication* _app;
-
+    CWindowGraphic* _mainWindow;
     std::map<std::string, QPixmap> _pixmaps;
+    CWindowGraphic::EType _setWidget;
 
     // singleton
     CGraphic();
     CGraphic(int argc, char** argv);
     ~CGraphic();
-    static CGraphic* _singleton;
 
+    static CGraphic* _singleton;
 };
 

@@ -5,7 +5,7 @@
 #include "Dungeon.h"
 
 CRegion::CRegion(int regionX, int regionY)
-        : _characters(std::list<CCharactereWorld*>()),
+        : _characters(std::list<CCharactereWorld*> ()),
           _regionX(regionX),
           _regionY(regionY)
 {
@@ -64,7 +64,7 @@ CCharactereWorld* CRegion::GetCharactersInArea(const C2DPosition& start, const C
 //init setting of the level region
 bool CRegion::Load(const json::Object& region)
 {
-
+	//todo static cast
     _regionX = (const json::Number) region["X"];
     _regionY = (const json::Number) region["Y"];
 

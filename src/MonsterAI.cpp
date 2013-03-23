@@ -35,7 +35,7 @@ void CMonsterAI::Update(int timeLeft)
     //random set for the AI to move in the dungeon around
     int move = CRandom::RandRange(0, 4);
 
-    CCharactereWorld* charWorld = (CCharactereWorld*) _charactere->GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (_charactere->GetWorldEntity());
     C2DPosition charPosition = charWorld->GetPosition();
     
     //switch control to set the next position for the monster if possible

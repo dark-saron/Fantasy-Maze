@@ -4,19 +4,21 @@
 
 class CGamePhase : public CPhase
 {
-
 public:
-   
-	//Functions
-    ~CGamePhase();
     CGamePhase();
-	void Begin();
+    ~CGamePhase();
+    
+    //Setter/Getter
+    CPhase::EType GetPhase() const;
+    
+    //Functions
+    void Begin();
     void Draw();
     void End();
     CPhase::EType Run(int timeLeft);
 
-    //Setter/Getter
-    CPhase::EType GetPhase() const;
     
+private:
+
 };
 

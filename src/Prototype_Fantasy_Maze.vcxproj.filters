@@ -53,6 +53,11 @@
     <Filter Include="Source Files\Extern\JSON">
       <UniqueIdentifier>{51b217a1-ab8e-4e09-90ad-8e4ffce3b138}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -308,6 +313,9 @@
     <ClInclude Include="Connector.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Prototype_Fantasy_Maze.rc" />
@@ -333,6 +341,9 @@
     </None>
     <None Include="JSON\elements.inl">
       <Filter>Source Files\Extern\JSON</Filter>
+    </None>
+    <None Include="prototype_fantasy_maze_de.ts">
+      <Filter>Translation Files</Filter>
     </None>
   </ItemGroup>
 </Project>

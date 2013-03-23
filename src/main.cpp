@@ -17,3 +17,15 @@ int main(int argc, char *argv[])
 
     return ret;
 }
+
+
+/*
+
+Actions... wohin, wie implementieren?
+Auf Logikseite "Gelöschte Objekte"... warten bis sie auf Graphicseite entfernt werden?
+CCharactereWorld nutzt CDungeon um sich zu registrieren
+Einbinden der Config, und ImageNamen
+
+
+
+*/

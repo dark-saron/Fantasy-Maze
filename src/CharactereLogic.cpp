@@ -11,7 +11,7 @@ CCharactereLogic::CCharactereLogic()
 
 CCharactereLogic::~CCharactereLogic()
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
     CDungeon::GetInstance().RemoveCharactere(*charWorld);
     delete charWorld;
 }
@@ -21,7 +21,7 @@ CCharactereLogic::~CCharactereLogic()
 //adds exp
 bool CCharactereLogic::AddExp(int gainedExp)
 {
-    CCharactereWorld* character = (CCharactereWorld*) this->GetWorldEntity();
+    CCharactereWorld* character = static_cast<CCharactereWorld*> (this->GetWorldEntity());
 
     if(gainedExp + character->GetNeedExpTillLvlUp() < GetLevelExp())    
     {
@@ -30,11 +30,11 @@ bool CCharactereLogic::AddExp(int gainedExp)
     }
     else    
     {
-        gainedExp   -=    ( GetLevelExp() - character->GetNeedExpTillLvlUp() );
+        gainedExp -= (GetLevelExp() - character->GetNeedExpTillLvlUp() );
         character->AddGainedExp(GetLevelExp() - character->GetNeedExpTillLvlUp());
 
         LevelUp();
-        AddExp(gainedExp);                 
+        AddExp(gainedExp);
     }
     
     return true;
@@ -46,8 +46,8 @@ bool CCharactereLogic::Attack(CCharactereWorld& enemy)
     if(enemy.IsDead())
         return false;
     
-    CCharactereWorld* attacker = (CCharactereWorld*) this->GetWorldEntity();
-    CCharactereLogic* enemyLogic = (CCharactereLogic*) enemy.GetLogicEntity();
+    CCharactereWorld* attacker = static_cast<CCharactereWorld*> (this->GetWorldEntity());
+    CCharactereLogic* enemyLogic = static_cast<CCharactereLogic*> (enemy.GetLogicEntity());
     
     if(enemyLogic->Defend(attacker->GetAttack()))
         this->AddExp(enemy.GetLevel());
@@ -58,7 +58,7 @@ bool CCharactereLogic::Attack(CCharactereWorld& enemy)
 //defend from incoming attack
 bool CCharactereLogic::Defend(int damage)
 {
-    CCharactereWorld* defender = (CCharactereWorld*) this->GetWorldEntity();
+    CCharactereWorld* defender = static_cast<CCharactereWorld*> (this->GetWorldEntity());
     AddHealth(std::min(0, defender->GetDefense() - damage));
 
     return defender->GetHealth() == 0;
@@ -67,7 +67,7 @@ bool CCharactereLogic::Defend(int damage)
 //gets the exp which the level needs to be reached
 int CCharactereLogic::GetLevelExp()
 {
-    CCharactereWorld* character = (CCharactereWorld*) this->GetWorldEntity();
+    CCharactereWorld* character = static_cast<CCharactereWorld*> (this->GetWorldEntity());
 
     return pow(character->GetLevel(), 2.0);
 }
@@ -84,7 +84,7 @@ bool CCharactereLogic::Killed(const CCharactereWorld& charactere)
 //true is only returned if the user changes position
 bool CCharactereLogic::Move(const C2DPosition& newPos)
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) this->GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (this->GetWorldEntity());
     CCharactereWorld* regionChar = CDungeon::GetInstance().GetCharacters(newPos);
 
     IWorldIterator iter = IWorldIterator(regionChar);
@@ -111,7 +111,7 @@ bool CCharactereLogic::Move(const C2DPosition& newPos)
 
 void CCharactereLogic::LevelUp(int levelUp)
 {
-    CCharactereWorld* character = (CCharactereWorld*) this->GetWorldEntity();
+    CCharactereWorld* character = static_cast<CCharactereWorld*> (this->GetWorldEntity());
     //increase all stats
     character->AddAttack(character->GetIncAttack() * levelUp);
     character->AddDefense(character->GetIncDefence() * levelUp);
@@ -129,27 +129,27 @@ void CCharactereLogic::LevelUp(int levelUp)
 
 void CCharactereLogic::SetHealth(int health)
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
     int realHealth = std::max(0, std::min(health, charWorld->GetMaxHealth()));
     charWorld->SetHealth(realHealth);
 }
 
 void CCharactereLogic::SetMana(int mana)
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
     int realMana = std::max(0, std::min(mana, charWorld->GetMaxMana()));
     charWorld->SetMana(realMana);
 }
 
 void CCharactereLogic::AddHealth(int healPoints)
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
     SetHealth(charWorld->GetHealth() + healPoints);
 }
 
 void CCharactereLogic::AddMana(int manaPoints)
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
     SetMana(charWorld->GetMana() + manaPoints);
 }
 

@@ -1,12 +1,12 @@
 #include "WindowGraphic.h"
 
-#include "Logic.h"
+#include "Connector.h"
 #include "Graphic.h"
 #include "Config.h"
 #include "Player.h"
 
 #include <QKeyEvent>
-#include "StatsGraphic.h"
+#include "Direction.h"
 #include "DungeonGraphic.h"
 #include "MenuGraphic.h"
 #include "GameGraphic.h"
@@ -50,10 +50,11 @@ void CWindowGraphic::Detach()
 {
     if (! _currentWidget)  return; 
 
+    // FIXME: this doesn't delete everything, it just deletes CWidget and all above, but not the attributes of CMenuGraphic or CGameGraphic...
     _currentWidget->hide();
-    _currentWidget->deleteLater();
+    _currentWidget->close();
 
-    delete _currentWidget;
+     delete _currentWidget;
     _currentWidget = 0;
 }
 
@@ -79,41 +80,41 @@ void CWindowGraphic::Draw()
 // Gets Key Event and sets Player Input
 void CWindowGraphic::keyPressEvent(QKeyEvent *key)
 {
-    CLogic& logic = CLogic::GetInstance();
-    SUserInput::EType input0 = SUserInput::none;
-    SUserInput::EType input1 = SUserInput::none;
+    CConnector& connector = CConnector::GetInstance();
+    SDirection::EType input0 = SDirection::none;
+    SDirection::EType input1 = SDirection::none;
 
     switch (key->key())
     {
 
         case Qt::Key_Up:
-            input0 = SUserInput::north; break;
+            input0 = SDirection::north; break;
         case Qt::Key_Down:
-            input0 = SUserInput::south; break;
+            input0 = SDirection::south; break;
         case Qt::Key_Left:
-            input0 = SUserInput::east;  break;
+            input0 = SDirection::east;  break;
         case Qt::Key_Right:
-            input0 = SUserInput::west;  break;
+            input0 = SDirection::west;  break;
 
         case Qt::Key_W:
-            input1 = SUserInput::north; break;
+            input1 = SDirection::north; break;
         case Qt::Key_S:
-            input1 = SUserInput::south; break;
+            input1 = SDirection::south; break;
         case Qt::Key_A:
-            input1 = SUserInput::east;  break;
+            input1 = SDirection::east;  break;
         case Qt::Key_D:
-            input1 = SUserInput::west;  break;
+            input1 = SDirection::west;  break;
 
         case Qt::Key_Escape:
-            input0 = SUserInput::back;  break;
+            CConnector::GetInstance().ToggleMenu();  break;
 
     }
 
-    if (logic.GetPlayer(0) && input0 != SUserInput::none)
-        logic.GetPlayer(0)->SetInput(input0);
+    if (input0 != SDirection::none)
+        CConnector::GetInstance().Input(0, input0);
     
-    if (logic.GetPlayer(1) && input1 != SUserInput::none)
-        logic.GetPlayer(1)->SetInput(input1);
+    if (input1 != SDirection::none)
+        CConnector::GetInstance().Input(1, input1);
 }
 
 

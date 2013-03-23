@@ -2,11 +2,6 @@
 
 #include "ui_MainWidget.h"
 
-#include "UserInput.h"
-
-class CDungeonGraphic;
-class CStatsGraphic;
-class CMenuGraphic;
 class QKeyEvent;
 class CWidget;
 
@@ -24,7 +19,7 @@ public:
 
     void Detach();
     CWidget* GetWidget() const;
-       void SetWidget(EType widget);
+    void SetWidget(EType widget);
     
     void Draw();
     void Reset();

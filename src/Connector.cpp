@@ -1,6 +1,9 @@
 #include "Connector.h"
 
 #include "Logic.h"
+#include "Graphic.h"
+#include "CharactereWorld.h"
+#include "Player.h"
 
 #include <assert.h>
 
@@ -13,9 +16,47 @@ CConnector::~CConnector()
 {
 }
 
+void CConnector::ContinueGame()
+{
+    _action = game;
+}
 
+void CConnector::StartGame(bool multiplayer)
+{
+    CLogic::GetInstance().StartLevel(1, 1 + multiplayer, true);
+    ContinueGame();
+}
 
+CCharactereWorld* CConnector::GetPlayerCharactere(int playerNr)
+{
+    CPlayer* player = CLogic::GetInstance().GetPlayer(playerNr);
+    if (!player) return 0;
+    
+    return static_cast<CCharactereWorld*> (player->GetCharactere().GetWorldEntity());
+}
 
+CConnector::EType CConnector::TakeAction()
+{
+    CConnector::EType ret = _action;
+    _action = CConnector::none;
+    return ret;
+}
+
+void CConnector::ToggleMenu()
+{
+    _action = back;
+}
+
+void CConnector::Exit()
+{
+    _action = exit;
+}
+
+void CConnector::Input(int playerNr, SDirection::EType input)
+{
+    if (CLogic::GetInstance().GetPlayer(playerNr))
+        CLogic::GetInstance().GetPlayer(playerNr)->SetInput(input);
+}
 
 ///////////////////////////////////////////////////////////////
 /// _singleton functions

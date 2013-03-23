@@ -32,8 +32,8 @@ void CCharactereGraphic::SetPixmap(const QPixmap& pixmap)
 
 QPixmap CCharactereGraphic::Draw()
 {
-    CCharactereWorld* charWorld = (CCharactereWorld*) GetWorldEntity();
-    //if (charWorld->IsDead())
-    //    return QPixmap();
+    CCharactereWorld* charWorld = static_cast<CCharactereWorld*> (GetWorldEntity());
+    if (charWorld->IsDead())
+        return QPixmap();
     return _pixmap;
 }

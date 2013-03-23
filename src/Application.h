@@ -5,19 +5,21 @@
 
 class CApplication : public CThread
 {
-
 public:
 
+    CApplication();
     ~CApplication();
-	CApplication();
-    CPhase::EType RunPhase(int timeLeft);
-    int Run();
-    void DrawPhase();
-    void Transition(CPhase::EType newPhase);
 
     // getter / setter
     CPhase& GetPhase() const;
+
+    int Run();
+    void DrawPhase();
+    CPhase::EType RunPhase(int timeLeft);
     
+    // changes to another phase
+    void Transition(CPhase::EType newPhase);
+
 private:
     
     CPhase* _phase;

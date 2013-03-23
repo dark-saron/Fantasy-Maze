@@ -56,7 +56,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;QtCored4.lib;QtGuid4.lib;QtOpenGLd4.lib;opengl32.lib;glu32.lib;QtNetworkd4.lib;QtScriptd4.lib;QtTestd4.lib;QtMultimediad4.lib;QtSqld4.lib;Qt3Supportd4.lib;comdlg32.lib;QtXmld4.lib;QtSvgd4.lib;QtHelpd4.lib;QtWebKitd4.lib;QtXmlPatternsd4.lib;QAxServerd.lib;phonond4.lib;QtDeclaratived4.lib;QtScriptToolsd4.lib;QtUiToolsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;QtCored4.lib;QtGuid4.lib;QtOpenGLd4.lib;opengl32.lib;glu32.lib;QtNetworkd4.lib;QtScriptd4.lib;QtTestd4.lib;QtMultimediad4.lib;QtSqld4.lib;Qt3Supportd4.lib;comdlg32.lib;QtXmld4.lib;QtSvgd4.lib;QtHelpd4.lib;QtWebKitd4.lib;QtXmlPatternsd4.lib;QAxServerd.lib;phonond4.lib;QtDeclaratived4.lib;QtScriptToolsd4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,7 +73,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;QtCore4.lib;QtGui4.lib;QtOpenGL4.lib;opengl32.lib;glu32.lib;QtNetwork4.lib;QtScript4.lib;QtTest4.lib;QtMultimedia4.lib;QtSql4.lib;Qt3Support4.lib;comdlg32.lib;QtXml4.lib;QtSvg4.lib;QtHelp4.lib;QtWebKit4.lib;QtXmlPatterns4.lib;QAxServer.lib;phonon4.lib;QtDeclarative4.lib;QtScriptTools4.lib;QtUiTools.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;QtCore4.lib;QtGui4.lib;QtOpenGL4.lib;opengl32.lib;glu32.lib;QtNetwork4.lib;QtScript4.lib;QtTest4.lib;QtMultimedia4.lib;QtSql4.lib;Qt3Support4.lib;comdlg32.lib;QtXml4.lib;QtSvg4.lib;QtHelp4.lib;QtWebKit4.lib;QtXmlPatterns4.lib;QAxServer.lib;phonon4.lib;QtDeclarative4.lib;QtScriptTools4.lib;QtUiTools4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -131,6 +131,7 @@
     <ClInclude Include="CellTypeLogic.h" />
     <ClInclude Include="CharactereGraphic.h" />
     <ClInclude Include="Connector.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="GameGraphic.h" />
     <ClInclude Include="GeneratedFiles\ui_GameWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_MenuWidget.h" />
@@ -305,13 +306,14 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
+    <None Include="prototype_fantasy_maze_de.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties UicDir=".\GeneratedFiles" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" RccDir=".\GeneratedFiles" lupdateOnBuild="0" lupdateOptions="" lreleaseOptions="" QtVersion_x0020_Win32="4.8.3" />
+      <UserProperties UicDir=".\GeneratedFiles" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" RccDir=".\GeneratedFiles" lupdateOnBuild="0" lupdateOptions="" lreleaseOptions="" QtVersion_x0020_Win32="4.8.4" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

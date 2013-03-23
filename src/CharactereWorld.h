@@ -9,7 +9,6 @@
 
 class CCharactereWorld : public CWorldEntity
 {
-
 public:
 
     enum EType
@@ -20,28 +19,13 @@ public:
         sizeOf
     };
     
-    //functions
-    ~CCharactereWorld();
+    //constructor/destructors
     CCharactereWorld();
     CCharactereWorld(const C2DPosition &pos, int health, int mana, CCharactereWorld::EType team);
-    void AddAttack(int strength);
-    void AddDefense(int defence);
-    void AddHealth(int healPoints);
-    void AddGainedExp(int exp);
-    void AddLevel(int level);
-    void AddMana(int manaPoints);
-    void AddMaxHealth(int health);
-    void AddMaxMana(int mana);
-    void AddNeedExpTillLvlUp(int exp);
-    void Load(const json::Object& charData);
-    bool IsDead() const;
-    bool InArea(const C2DPosition& start, const C2DPosition& end) const;
+    ~CCharactereWorld();
     
     //setter/getter
-    CCharactereWorld* GetVisibleCharacters();
-	const C2DPosition& GetPosition() const;
-    EType GetTeam() const;
-	int GetAttack() const;
+    int GetAttack() const;
     int GetDefense() const;
     int GetGainedExp() const;
     int GetHealth() const;
@@ -54,8 +38,10 @@ public:
     int GetMaxHealth() const;
     int GetMaxMana() const;
     int GetNeedExpTillLvlUp() const;
+    const C2DPosition& GetPosition() const;
     int GetViewRange() const;
-    
+    EType GetTeam() const;
+
     void SetMana(int manaPoints);
     void SetHealth(int healthPoints);
     void SetNeedExpTillLvlUp(int exp);
@@ -67,6 +53,22 @@ public:
     void SetViewRange(int view);
     void SetTeam(EType team);
     
+    void Load(const json::Object& charData);
+    
+    //functions
+    void AddAttack(int strength);
+    void AddDefense(int defence);
+    void AddHealth(int healPoints);
+    void AddGainedExp(int exp);
+    void AddLevel(int level);
+    void AddMana(int manaPoints);
+    void AddMaxHealth(int health);
+    void AddMaxMana(int mana);
+    void AddNeedExpTillLvlUp(int exp);
+    bool IsDead() const;
+    bool InArea(const C2DPosition& start, const C2DPosition& end) const;
+    CCharactereWorld* GetVisibleCharacters();
+
 private:
     
     C2DPosition _pos;

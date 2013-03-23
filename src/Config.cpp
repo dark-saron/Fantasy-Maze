@@ -36,15 +36,13 @@ bool CConfig::LoadCellTypes()
     for (; iter != iterEnd; ++iter)
     {
         const json::Object& data = *iter;
-        std::string id = (json::String) data["ID"];
-        _imageNames[id] = (json::String) data["Image"];
+        std::string id = static_cast<json::String> (data["ID"]);
+        _imageNames[id] = static_cast<json::String> (data["Image"]);
     }
 
     file.close();
     return true;
 }
-
-
 
 // loads/reloads the creatures-configuration /Dungeon/Creatures.dat
 bool CConfig::LoadCharactereTypes()
@@ -64,10 +62,10 @@ bool CConfig::LoadCharactereTypes()
         // TODO: Das noch etwas aufhübschen
         const json::Object& data = *iter;
 
-        std::string id = (json::String) data["ID"];
+        std::string id = static_cast<json::String> (data["ID"]);
         _charactereTypes[id] = data;
 
-        _imageNames[id] = (json::String) data["Image"];
+        _imageNames[id] = static_cast<json::String> (data["Image"]);
     }
 
     file.close();

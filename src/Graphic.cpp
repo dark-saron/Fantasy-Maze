@@ -1,10 +1,11 @@
 #include "Graphic.h"
 
-#include "Thread.h"
 #include "WindowGraphic.h"
-#include "Logic.h"
 #include "Config.h"
+#include "Dungeon.h"
+#include "Connector.h"
 #include "WorldIterator.h"
+#include <QTranslator>
 
 #include <assert.h>
 
@@ -14,6 +15,15 @@ CGraphic* CGraphic::_singleton = 0;
 CGraphic::~CGraphic()
 {
     Reset();
+    
+    CCellTypeWorld* cellTypeWorld = CDungeon::GetInstance().GetAllCellTypes();
+    IWorldIterator iter = IWorldIterator(cellTypeWorld);
+
+    for (; iter.FirstLoop(); ++iter)
+    {
+        delete static_cast<CCellTypeGraphic*> ((*iter)->GetGraphicEntity());
+    }
+
     delete _mainWindow;
     delete _app;
 }
@@ -24,8 +34,10 @@ CGraphic::CGraphic(int argc, char* argv[])
 {
     
     _app = new QApplication(argc, argv);
-    _mainWindow = new CWindowGraphic();
-
+	//QTranslator* test = new QTranslator(_app, "prototype_fantasy_maze_de.ts");
+	//_app->installTranslator(test);
+	_mainWindow = new CWindowGraphic();
+	
     _app->connect(this, SIGNAL(DoDraw()), this, SLOT(OnDraw()));
     _app->connect(this, SIGNAL(DoSetWidget()), this, SLOT(OnSetWidget()));
     _app->connect(_app, SIGNAL(aboutToQuit()), this, SLOT(OnExit()));
@@ -33,17 +45,7 @@ CGraphic::CGraphic(int argc, char* argv[])
     _mainWindow->SetWidget(CWindowGraphic::menu);
 }
 
-CWidget* CGraphic::GetWidget() const
-{
-    return _mainWindow->GetWidget();
-}
-
-void CGraphic::SetAction(CGraphic::EType action)
-{
-    _action = action;
-}
-
-void CGraphic::SetExit()
+void CGraphic::Exit()
 {
     _app->exit();
 }
@@ -54,15 +56,9 @@ void CGraphic::SetWidget(CWindowGraphic::EType widget)
     emit(DoSetWidget());
 }
 
-CGraphic::EType CGraphic::GetAction()
-{
-    return _action;
-}
-
 void CGraphic::Reset()
 {
     _mainWindow->Reset();
-
     _pixmaps.clear();
 }
 
@@ -85,8 +81,7 @@ void CGraphic::Draw()
 
 void CGraphic::OnExit()
 {
-    SetAction(exit);
-    CLogic::GetInstance().SetExit(true);
+    CConnector::GetInstance().Exit();
 }
 
 void CGraphic::OnDraw()
@@ -107,8 +102,8 @@ void CGraphic::RemoveDeadEntities()
     IWorldIterator iter = IWorldIterator(charWorld);
     for (; iter.FirstLoop(); ++iter)
     {
-        charWorld   = (CCharactereWorld*) *iter;
-        charGraphic = (CCharactereGraphic*) charWorld->GetGraphicEntity(); 
+        charWorld   = static_cast<CCharactereWorld*> (*iter);
+        charGraphic = static_cast<CCharactereGraphic*> (charWorld->GetGraphicEntity()); 
         if (charGraphic && charWorld->IsDead())
             delete charGraphic;
     }
@@ -133,7 +128,7 @@ CCellTypeGraphic& CGraphic::GetCellType(const CCellTypeWorld& constCellType)
 {
     // TODO: find another solution without const_cast, const_cast is needed, bescause we get just an const cellTypeWorld from the dungeon
     CCellTypeWorld& cellTypeWorld = const_cast<CCellTypeWorld&> (constCellType);
-    CCellTypeGraphic* cellTypeGraphic = (CCellTypeGraphic*) cellTypeWorld.GetGraphicEntity();
+    CCellTypeGraphic* cellTypeGraphic = static_cast<CCellTypeGraphic*> (cellTypeWorld.GetGraphicEntity());
     if (!cellTypeGraphic)
     {
         cellTypeGraphic = new CCellTypeGraphic();
@@ -147,7 +142,7 @@ CCellTypeGraphic& CGraphic::GetCellType(const CCellTypeWorld& constCellType)
 
 CCharactereGraphic& CGraphic::GetCharactere(CCharactereWorld& charWorld)
 {
-    CCharactereGraphic* charGraphic = (CCharactereGraphic*) charWorld.GetGraphicEntity();
+    CCharactereGraphic* charGraphic = static_cast<CCharactereGraphic*> (charWorld.GetGraphicEntity());
     if (!charGraphic)
     {
         charGraphic = new CCharactereGraphic();

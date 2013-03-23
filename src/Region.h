@@ -10,25 +10,27 @@
 class CRegion
 {
 
-public:
-
-		//functions
+    public:
+        //constructor/destructor
+        CRegion(int regionX = 0, int regionY = 0);
         ~CRegion();
-		CRegion(int regionX = 0, int regionY = 0);
-        bool Load(const json::Object& region);
-        void AddCharactere(CCharactereWorld& charactere);
-        void RemoveCharactere(CCharactereWorld& charactere);
-        
+
         //getter/setter
         const CCellTypeWorld* GetCell(const C2DPosition& pos) const;
         CCharactereWorld* GetCharacters(const C2DPosition& pos);
         CCharactereWorld* GetCharactersInArea(const C2DPosition& start, const C2DPosition& end);
+
+        //functions
+        void AddCharactere(CCharactereWorld& charactere);
+        bool Load(const json::Object& region);
+        void RemoveCharactere(CCharactereWorld& charactere);
+        
         static int GetSizeX();
         static int GetSizeY();
 
+
 private:
- 
-	static const int MAX_X = 17;
+    static const int MAX_X = 17;
     static const int MAX_Y = 17;
 
      int _regionX;
