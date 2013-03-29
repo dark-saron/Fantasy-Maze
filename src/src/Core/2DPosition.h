@@ -97,9 +97,10 @@ public:
 	}
 
 	// -----------------------------------------------------------------------------
-    C2DPosition<T> operator-(const C2DPosition<T>& value) const
+    C2DPosition<T> operator-(const C2DPosition<T>& pos) const
 	{
-		return C2DPosition<T>(_pos[0] - pos._pos[0], _pos[1] - pos._pos[1]);
+		return C2DPosition<T>(_pos[0] - pos._pos[0],
+                                      _pos[1] - pos._pos[1]);
 	}
 
 	// -----------------------------------------------------------------------------
