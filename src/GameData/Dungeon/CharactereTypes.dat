@@ -1,0 +1,72 @@
+[
+    {
+        "ID": "8D616C30-63B3-431B-9A5E-7FE8AF2EFD17",
+        "Attack": 1,
+        "Defense": 0,
+        "Health": 20,
+        "Mana": 0,
+
+        "IncAttack": 0,
+        "IncDefense": 0,
+        "IncHealth": 0,
+        "IncMana": 0,
+
+		"Image": "Resources/Human.png"		
+    },
+    {
+        "ID": "55257B9F-6CB2-4DDA-B61D-D5375C451017",
+        "Attack": 1,
+        "Defense": 1,
+        "Health": 20,
+        "Mana": 0,
+	
+        "IncAttack": 0,
+        "IncDefense": 0,
+        "IncHealth": 0,
+        "IncMana": 0,
+		
+		"Image": "Resources/Human.png"			
+    },
+    {
+        "ID": "ADB7BEB4-94A3-4F50-A925-FD9C927557BE",
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 1,
+        "Mana": 0,
+
+        "IncAttack": 0,
+        "IncDefense": 0,
+        "IncHealth": 0,
+        "IncMana": 0,
+		
+		"Image": "Resources/Stone.png"			
+    },
+    {
+        "ID": "67B7361D-3204-401D-93F8-8CEB1715D3F7",
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 2,
+        "Mana": 0,
+
+        "IncAttack": 0,
+        "IncDefense": 0,
+        "IncHealth": 0,
+        "IncMana": 0,
+		
+		"Image": "Resources/Coal.png"			
+    },
+    {
+        "ID": "2E27594B-EA78-4AD8-B91F-0D79ADB14C67",
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 3,
+        "Mana": 0,
+
+        "IncAttack": 0,
+        "IncDefense": 0,
+        "IncHealth": 0,
+        "IncMana": 0,
+		
+		"Image": "Resources/Iron.png"			
+    }
+]
