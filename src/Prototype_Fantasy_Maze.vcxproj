@@ -77,12 +77,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CellTypeGraphic.cpp" />
-    <ClCompile Include="CellTypeLogic.cpp" />
-    <ClCompile Include="CharactereGraphic.cpp" />
-    <ClCompile Include="Config.cpp" />
-    <ClCompile Include="Connector.cpp" />
-    <ClCompile Include="GameGraphic.cpp" />
+    <ClCompile Include="src\Graphics\CellTypeGraphic.cpp" />
+    <ClCompile Include="src\Logic\CellTypeLogic.cpp" />
+    <ClCompile Include="src\Graphics\CharactereGraphic.cpp" />
+    <ClCompile Include="src\App\Config.cpp" />
+    <ClCompile Include="src\Graphics\Connector.cpp" />
+    <ClCompile Include="src\Graphics\GameGraphic.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_MenuGraphic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -95,47 +95,46 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Widget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GraphicEntity.cpp" />
-    <ClCompile Include="MenuGraphic.cpp" />
-    <ClCompile Include="MonsterAI.cpp" />
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="2DPosition.cpp" />
-    <ClCompile Include="CellTypeWorld.cpp" />
-    <ClCompile Include="CharactereLogic.cpp" />
-    <ClCompile Include="CharactereWorld.cpp" />
-    <ClCompile Include="Dungeon.cpp" />
-    <ClCompile Include="DungeonGraphic.cpp" />
-    <ClCompile Include="GamePhase.cpp" />
+    <ClCompile Include="src\Graphics\GraphicEntity.cpp" />
+    <ClCompile Include="src\Graphics\MenuGraphic.cpp" />
+    <ClCompile Include="src\AI\MonsterAI.cpp" />
+    <ClCompile Include="src\App\Application.cpp" />
+    <ClCompile Include="src\Data\CellTypeWorld.cpp" />
+    <ClCompile Include="src\Logic\CharactereLogic.cpp" />
+    <ClCompile Include="src\Data\CharactereWorld.cpp" />
+    <ClCompile Include="src\Data\Dungeon.cpp" />
+    <ClCompile Include="src\Graphics\DungeonGraphic.cpp" />
+    <ClCompile Include="src\App\GamePhase.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_Graphic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Graphic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Graphic.cpp" />
-    <ClCompile Include="Logic.cpp" />
-    <ClCompile Include="LogicEntity.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MenuPhase.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Region.cpp" />
-    <ClCompile Include="WorldIterator.cpp" />
-    <ClCompile Include="StatsGraphic.cpp" />
-    <ClCompile Include="Thread.cpp" />
-    <ClCompile Include="WindowGraphic.cpp" />
-    <ClCompile Include="WorldEntity.cpp" />
+    <ClCompile Include="src\Graphics\Graphic.cpp" />
+    <ClCompile Include="src\Logic\Logic.cpp" />
+    <ClCompile Include="src\Logic\LogicEntity.cpp" />
+    <ClCompile Include="src\App\main.cpp" />
+    <ClCompile Include="src\App\MenuPhase.cpp" />
+    <ClCompile Include="src\Logic\Player.cpp" />
+    <ClCompile Include="src\Core\Random.cpp" />
+    <ClCompile Include="src\Data\Region.cpp" />
+    <ClCompile Include="src\Data\WorldIterator.cpp" />
+    <ClCompile Include="src\Graphics\StatsGraphic.cpp" />
+    <ClCompile Include="src\Core\Thread.cpp" />
+    <ClCompile Include="src\Graphics\WindowGraphic.cpp" />
+    <ClCompile Include="src\Data\WorldEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CellTypeGraphic.h" />
-    <ClInclude Include="CellTypeLogic.h" />
-    <ClInclude Include="CharactereGraphic.h" />
-    <ClInclude Include="Connector.h" />
-    <ClInclude Include="Direction.h" />
-    <ClInclude Include="GameGraphic.h" />
+    <ClInclude Include="src\Graphics\CellTypeGraphic.h" />
+    <ClInclude Include="src\Logic\CellTypeLogic.h" />
+    <ClInclude Include="src\Graphics\CharactereGraphic.h" />
+    <ClInclude Include="src\Graphics\Connector.h" />
+    <ClInclude Include="src\Data\Direction.h" />
+    <ClInclude Include="src\Graphics\GameGraphic.h" />
     <ClInclude Include="GeneratedFiles\ui_GameWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_MenuWidget.h" />
-    <CustomBuild Include="MenuGraphic.h">
+    <CustomBuild Include="src\Graphics\MenuGraphic.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing MenuGraphic.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -145,16 +144,16 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_NETWORK_LIB -DQT_SCRIPT_LIB -DQT_MULTIMEDIA_LIB -DQT_SQL_LIB -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_XML_LIB -DQT_SVG_LIB -DQT_WEBKIT_LIB -DQT_XMLPATTERNS_LIB -DQAXSERVER -DQT_PHONON_LIB -DQT_DECLARATIVE_LIB -DQT_SCRIPTTOOLS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtTest" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\Qt3Support" "-I$(QTDIR)\include\QtXml" "-I$(QTDIR)\include\QtSvg" "-I$(QTDIR)\include\QtHelp" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtXmlPatterns" "-I$(QTDIR)\include\ActiveQt" "-I$(QTDIR)\include\phonon" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtUiTools"</Command>
     </CustomBuild>
-    <ClInclude Include="GraphicEntity.h" />
-    <ClInclude Include="MonsterAI.h" />
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="2DPosition.h" />
-    <ClInclude Include="CellTypeWorld.h" />
-    <ClInclude Include="CharactereLogic.h" />
-    <ClInclude Include="CharactereWorld.h" />
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="Dungeon.h" />
-    <CustomBuild Include="DungeonGraphic.h">
+    <ClInclude Include="src\Graphics\GraphicEntity.h" />
+    <ClInclude Include="src\AI\MonsterAI.h" />
+    <ClInclude Include="src\App\Application.h" />
+    <ClInclude Include="src\Core\2DPosition.h" />
+    <ClInclude Include="src\Data\CellTypeWorld.h" />
+    <ClInclude Include="src\Logic\CharactereLogic.h" />
+    <ClInclude Include="src\Data\CharactereWorld.h" />
+    <ClInclude Include="src\App\Config.h" />
+    <ClInclude Include="src\Data\Dungeon.h" />
+    <CustomBuild Include="src\Graphics\DungeonGraphic.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>
@@ -170,10 +169,10 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <ClInclude Include="GamePhase.h" />
+    <ClInclude Include="src\App\GamePhase.h" />
     <ClInclude Include="GeneratedFiles\ui_DungeonWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_MainWidget.h" />
-    <CustomBuild Include="Graphic.h">
+    <CustomBuild Include="src\Graphics\Graphic.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing Graphic.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -184,22 +183,22 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_NETWORK_LIB -DQT_SCRIPT_LIB -DQT_MULTIMEDIA_LIB -DQT_SQL_LIB -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_XML_LIB -DQT_SVG_LIB -DQT_WEBKIT_LIB -DQT_XMLPATTERNS_LIB -DQAXSERVER -DQT_PHONON_LIB -DQT_DECLARATIVE_LIB -DQT_SCRIPTTOOLS_LIB  "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtTest" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\Qt3Support" "-I$(QTDIR)\include\QtXml" "-I$(QTDIR)\include\QtSvg" "-I$(QTDIR)\include\QtHelp" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtXmlPatterns" "-I$(QTDIR)\include\ActiveQt" "-I$(QTDIR)\include\phonon" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtUiTools"</Command>
     </CustomBuild>
     <ClInclude Include="GeneratedFiles\ui_StatWidget.h" />
-    <ClInclude Include="JSON\elements.h" />
-    <ClInclude Include="JSON\reader.h" />
-    <ClInclude Include="JSON\visitor.h" />
-    <ClInclude Include="JSON\writer.h" />
-    <ClInclude Include="Logic.h" />
-    <ClInclude Include="LogicEntity.h" />
-    <ClInclude Include="MenuPhase.h" />
-    <ClInclude Include="Phase.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="Region.h" />
+    <ClInclude Include="src\Extern\JSON\elements.h" />
+    <ClInclude Include="src\Extern\JSON\reader.h" />
+    <ClInclude Include="src\Extern\JSON\visitor.h" />
+    <ClInclude Include="src\Extern\JSON\writer.h" />
+    <ClInclude Include="src\Logic\Logic.h" />
+    <ClInclude Include="src\Logic\LogicEntity.h" />
+    <ClInclude Include="src\App\MenuPhase.h" />
+    <ClInclude Include="src\App\Phase.h" />
+    <ClInclude Include="src\Logic\Player.h" />
+    <ClInclude Include="src\Core\Random.h" />
+    <ClInclude Include="src\Data\Region.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="WorldIterator.h" />
-    <ClInclude Include="StatsGraphic.h" />
-    <ClInclude Include="Thread.h" />
-    <CustomBuild Include="WindowGraphic.h">
+    <ClInclude Include="src\Data\WorldIterator.h" />
+    <ClInclude Include="src\Graphics\StatsGraphic.h" />
+    <ClInclude Include="src\Core\Thread.h" />
+    <CustomBuild Include="src\Graphics\WindowGraphic.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>
@@ -215,7 +214,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <CustomBuild Include="Widget.h">
+    <CustomBuild Include="src\Graphics\Widget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing Widget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -225,7 +224,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_NETWORK_LIB -DQT_SCRIPT_LIB -DQT_MULTIMEDIA_LIB -DQT_SQL_LIB -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_XML_LIB -DQT_SVG_LIB -DQT_WEBKIT_LIB -DQT_XMLPATTERNS_LIB -DQAXSERVER -DQT_PHONON_LIB -DQT_DECLARATIVE_LIB -DQT_SCRIPTTOOLS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtTest" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\Qt3Support" "-I$(QTDIR)\include\QtXml" "-I$(QTDIR)\include\QtSvg" "-I$(QTDIR)\include\QtHelp" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtXmlPatterns" "-I$(QTDIR)\include\ActiveQt" "-I$(QTDIR)\include\phonon" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtUiTools"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldEntity.h" />
+    <ClInclude Include="src\Data\WorldEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="prototype_fantasy_maze.qrc">
@@ -247,7 +246,7 @@
     <None Include="..\..\..\..\..\Pictures\Floor.png" />
     <None Include="..\..\..\..\..\Pictures\Skeleton.png" />
     <None Include="..\..\..\..\..\Pictures\Wall.png" />
-    <CustomBuild Include="DungeonWidget.ui">
+    <CustomBuild Include="Form Files\DungeonWidget.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
@@ -258,7 +257,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
-    <CustomBuild Include="GameWidget.ui">
+    <CustomBuild Include="Form Files\GameWidget.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
@@ -270,7 +269,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
     <None Include="Hero_front.png" />
-    <CustomBuild Include="StatWidget.ui">
+    <CustomBuild Include="Form Files\StatWidget.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
@@ -281,7 +280,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
-    <CustomBuild Include="MainWidget.ui">
+    <CustomBuild Include="Form Files\MainWidget.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
@@ -292,10 +291,10 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
-    <None Include="JSON\elements.inl" />
-    <None Include="JSON\reader.inl" />
-    <None Include="JSON\writer.inl" />
-    <CustomBuild Include="MenuWidget.ui">
+    <None Include="src\Extern\JSON\elements.inl" />
+    <None Include="src\Extern\JSON\reader.inl" />
+    <None Include="src\Extern\JSON\writer.inl" />
+    <CustomBuild Include="Form Files\MenuWidget.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>

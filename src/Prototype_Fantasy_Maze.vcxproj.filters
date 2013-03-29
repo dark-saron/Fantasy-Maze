@@ -60,83 +60,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePhase.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuPhase.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="DungeonGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="CharactereLogic.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="LogicEntity.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="Logic.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldEntity.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="CharactereWorld.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Region.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Dungeon.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="StatsGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Thread.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_Graphic.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Graphic.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="2DPosition.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterAI.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicEntity.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="CellTypeWorld.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="CellTypeLogic.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="CellTypeGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_Widget.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -150,105 +78,132 @@
     <ClCompile Include="GeneratedFiles\Release\moc_MenuGraphic.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GameGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
+    <ClCompile Include="src\AI\MonsterAI.cpp">
+      <Filter>Source Files\AI</Filter>
     </ClCompile>
-    <ClCompile Include="CharactereGraphic.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldIterator.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Random.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp">
+    <ClCompile Include="src\App\Application.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
-    <ClCompile Include="Connector.cpp">
+    <ClCompile Include="src\App\Config.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App\GamePhase.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App\main.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App\MenuPhase.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Random.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Thread.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\CellTypeWorld.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\CharactereWorld.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\Dungeon.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\Region.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\WorldEntity.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data\WorldIterator.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\CellTypeGraphic.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\CharactereGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Connector.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\DungeonGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\GameGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Graphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\GraphicEntity.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\MenuGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\StatsGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\WindowGraphic.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logic\CellTypeLogic.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logic\CharactereLogic.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logic\Logic.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logic\LogicEntity.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logic\Player.cpp">
+      <Filter>Source Files\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="prototype_fantasy_maze.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="DungeonGraphic.h">
+    <CustomBuild Include="src\Graphics\DungeonGraphic.h">
       <Filter>Source Files\Graphics</Filter>
     </CustomBuild>
-    <CustomBuild Include="Graphic.h">
+    <CustomBuild Include="src\Graphics\Graphic.h">
       <Filter>Source Files\Graphics</Filter>
     </CustomBuild>
-    <CustomBuild Include="WindowGraphic.h">
+    <CustomBuild Include="src\Graphics\MenuGraphic.h">
       <Filter>Source Files\Graphics</Filter>
     </CustomBuild>
-    <CustomBuild Include="StatWidget.ui">
+    <CustomBuild Include="src\Graphics\Widget.h">
+      <Filter>Source Files\Graphics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Graphics\WindowGraphic.h">
+      <Filter>Source Files\Graphics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Form Files\DungeonWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="MainWidget.ui">
+    <CustomBuild Include="Form Files\GameWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="DungeonWidget.ui">
+    <CustomBuild Include="Form Files\MainWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="MenuWidget.ui">
+    <CustomBuild Include="Form Files\MenuWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="MenuGraphic.h">
-      <Filter>Source Files\Graphics</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Widget.h">
-      <Filter>Source Files\Graphics</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GameWidget.ui">
+    <CustomBuild Include="Form Files\StatWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Dungeon.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="CharactereWorld.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Logic.h">
-      <Filter>Source Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="LogicEntity.h">
-      <Filter>Source Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="CharactereLogic.h">
-      <Filter>Source Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePhase.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldEntity.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Phase.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuPhase.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Region.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="StatsGraphic.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Thread.h">
-      <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_StatWidget.h">
       <Filter>Generated Files</Filter>
@@ -259,62 +214,104 @@
     <ClInclude Include="GeneratedFiles\ui_DungeonWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="2DPosition.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="JSON\reader.h">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="JSON\visitor.h">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="JSON\writer.h">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="JSON\elements.h">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterAI.h">
-      <Filter>Source Files\AI</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MenuWidget.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicEntity.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="CellTypeWorld.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="CellTypeLogic.h">
-      <Filter>Source Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="CellTypeGraphic.h">
-      <Filter>Source Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GameGraphic.h">
-      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_GameWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharactereGraphic.h">
-      <Filter>Source Files\Graphics</Filter>
+    <ClInclude Include="src\AI\MonsterAI.h">
+      <Filter>Source Files\AI</Filter>
     </ClInclude>
-    <ClInclude Include="WorldIterator.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
+    <ClInclude Include="src\App\Application.h">
       <Filter>Source Files\App</Filter>
     </ClInclude>
-    <ClInclude Include="Connector.h">
+    <ClInclude Include="src\App\Config.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="src\App\GamePhase.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="src\App\MenuPhase.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="src\App\Phase.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\2DPosition.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Random.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Thread.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\CellTypeWorld.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\CharactereWorld.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\Direction.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\Dungeon.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\Region.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\WorldEntity.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Data\WorldIterator.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extern\JSON\elements.h">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extern\JSON\reader.h">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extern\JSON\visitor.h">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extern\JSON\writer.h">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\CellTypeGraphic.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Source Files\Data</Filter>
+    <ClInclude Include="src\Graphics\CharactereGraphic.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Connector.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\GameGraphic.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\GraphicEntity.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\StatsGraphic.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\CellTypeLogic.h">
+      <Filter>Source Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\CharactereLogic.h">
+      <Filter>Source Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\Logic.h">
+      <Filter>Source Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\LogicEntity.h">
+      <Filter>Source Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logic\Player.h">
+      <Filter>Source Files\Logic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -333,17 +330,17 @@
     <None Include="Hero_front.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="JSON\reader.inl">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </None>
-    <None Include="JSON\writer.inl">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </None>
-    <None Include="JSON\elements.inl">
-      <Filter>Source Files\Extern\JSON</Filter>
-    </None>
     <None Include="prototype_fantasy_maze_de.ts">
       <Filter>Translation Files</Filter>
+    </None>
+    <None Include="src\Extern\JSON\elements.inl">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </None>
+    <None Include="src\Extern\JSON\reader.inl">
+      <Filter>Source Files\Extern\JSON</Filter>
+    </None>
+    <None Include="src\Extern\JSON\writer.inl">
+      <Filter>Source Files\Extern\JSON</Filter>
     </None>
   </ItemGroup>
 </Project>
