@@ -1,5 +1,6 @@
 #pragma once
-#include "phase.h"
+
+#include "src/App/Phase.h"
 
 //nicht im prototypen
 class CMenuPhase : public CPhase

@@ -9,5 +9,5 @@ public:
 
     static int RandRange(int start, int stop, int step = 1);
 
-    int CRandom::RandInt(int a, int b);
+    int RandInt(int a, int b);
 };

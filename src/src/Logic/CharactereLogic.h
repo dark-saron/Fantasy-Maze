@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/Logic/logicentity.h"
+#include "src/Logic/LogicEntity.h"
 #include "src/Data/CharactereWorld.h"
 #include "src/Data/Dungeon.h"
 

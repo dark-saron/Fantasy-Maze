@@ -1,6 +1,6 @@
 #pragma once
 
-#include <windows.h>
+
 
 
 class CThread
@@ -13,12 +13,12 @@ public:
         
         bool IsAlive();
         void Start();
-        static void RunThread(CThread* _pThread);
+        static void* RunThread(CThread* _pThread);
         
 private:
         virtual int Run() = 0;
         
         bool _alive;
-        DWORD _thread;
-        HANDLE _handle;
+        long unsigned int _thread;
+        void* _handle;
 };

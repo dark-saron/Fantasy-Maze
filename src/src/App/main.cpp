@@ -6,10 +6,9 @@ using namespace std;
 
 //Main Thread = QApplication = QT
 //by Thread = CApplikation
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-    CApplication app = CApplication();
-    
+    CApplication app = CApplication(argc, argv);
     app.Start();
     int ret = CGraphic::GetInstance().Run();
 
@@ -22,7 +21,7 @@ int main(int argc, char *argv[])
 /*
 
 Actions... wohin, wie implementieren?
-Auf Logikseite "Gelöschte Objekte"... warten bis sie auf Graphicseite entfernt werden?
+Auf Logikseite "GelÃ¶schte Objekte"... warten bis sie auf Graphicseite entfernt werden?
 CCharactereWorld nutzt CDungeon um sich zu registrieren
 Einbinden der Config, und ImageNamen
 

@@ -2,6 +2,8 @@
 
 #include "src/Data/WorldIterator.h"
 
+#include <math.h>
+
 CCharactereLogic::CCharactereLogic()
 {
     this->SetWorldEntity(new CCharactereWorld());

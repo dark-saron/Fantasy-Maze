@@ -5,12 +5,32 @@
 #include "src/Data/Dungeon.h"
 #include "src/Graphics/Connector.h"
 #include "src/Data/WorldIterator.h"
-#include <QTranslator>
+#include "src/Graphics/Widget.h"
 
+#include <QObject>
+#include <QApplication>
+#include <QTranslator>
 #include <assert.h>
 
 //singleton is always 0
 CGraphic* CGraphic::_singleton = 0;
+
+CGraphic::CGraphic(int argc, char* argv[])
+         : QObject()
+{
+
+    _app = new QApplication(argc, argv);
+	//QTranslator* test = new QTranslator(_app, "prototype_fantasy_maze_de.ts");
+	//_app->installTranslator(test);
+	_mainWindow = new CWindowGraphic();
+
+    _app->connect(this, SIGNAL(DoDraw()), this, SLOT(OnDraw()));
+    _app->connect(this, SIGNAL(DoSetWidget()), this, SLOT(OnSetWidget()));
+    _app->connect(_app, SIGNAL(aboutToQuit()), this, SLOT(OnExit()));
+
+    _mainWindow->SetWidget(CWindowGraphic::menu);
+}
+
 
 CGraphic::~CGraphic()
 {
@@ -28,22 +48,6 @@ CGraphic::~CGraphic()
     delete _app;
 }
 
-CGraphic::CGraphic(int argc, char* argv[])
-         : QObject(),
-           _pixmaps(std::map<std::string, QPixmap>())
-{
-    
-    _app = new QApplication(argc, argv);
-	//QTranslator* test = new QTranslator(_app, "prototype_fantasy_maze_de.ts");
-	//_app->installTranslator(test);
-	_mainWindow = new CWindowGraphic();
-	
-    _app->connect(this, SIGNAL(DoDraw()), this, SLOT(OnDraw()));
-    _app->connect(this, SIGNAL(DoSetWidget()), this, SLOT(OnSetWidget()));
-    _app->connect(_app, SIGNAL(aboutToQuit()), this, SLOT(OnExit()));
-
-    _mainWindow->SetWidget(CWindowGraphic::menu);
-}
 
 void CGraphic::Exit()
 {
@@ -116,7 +120,7 @@ const QPixmap& CGraphic::GetPixmap(const std::string& typeID)
     {
         const char* imageName = CConfig::GetInstance().GetImageName(typeID).c_str();
         QPixmap pixmap = QPixmap(imageName);
-        assert(!pixmap.isNull()); // if this happens, the dungeon-files are broken
+        assert(!pixmap.isNull()); // if this happens, the dungeon-files are broken or the pixmap doesnt exist
 
         _pixmaps[typeID] = pixmap;
     }
@@ -168,13 +172,11 @@ CGraphic& CGraphic::GetInstance()
 }
 
 //creates the instance of the singleton
-void CGraphic::CreateInstance()
+void CGraphic::CreateInstance(int argc, char* argv[])
 {
     assert(_singleton == 0);
      
-    int argc = 0;
-    char* argv = ""; 
-    CGraphic::_singleton = new CGraphic(argc, &argv);
+    CGraphic::_singleton = new CGraphic(argc, argv);
 }
 
 //gives the memory free from the singleton and sets it back 0

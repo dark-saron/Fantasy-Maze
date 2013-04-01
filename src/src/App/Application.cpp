@@ -5,6 +5,9 @@
 #include "src/Data/Dungeon.h"
 #include "src/Graphics/Graphic.h"
 #include "src/Logic/Logic.h"
+#include "src/Core/Delay.h"
+#include "src/Core/Thread.h"
+#include "src/App/Phase.h"
 
 #include "src/App/GamePhase.h"
 #include "src/App/MenuPhase.h"
@@ -14,7 +17,7 @@
 #include <time.h>
 
 
-CApplication::CApplication()
+CApplication::CApplication(int argc, char* argv[])
              : CThread(),
                _phase(0)
                
@@ -27,7 +30,7 @@ CApplication::CApplication()
 
     CDungeon::CreateInstance();
     CLogic::CreateInstance();
-    CGraphic::CreateInstance();
+    CGraphic::CreateInstance(argc, argv);
 
     CLogic::GetInstance().Start();
     CGraphic::GetInstance().Start();
@@ -78,7 +81,7 @@ int CApplication::Run()
         DrawPhase();
         Transition(newPhase);
         
-        Sleep(timeLeft);
+        Delay(timeLeft);
     }
     
     return 0;

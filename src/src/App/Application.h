@@ -7,7 +7,7 @@ class CApplication : public CThread
 {
 public:
 
-    CApplication();
+    CApplication(int argc, char* argv[]);
     ~CApplication();
 
     // getter / setter

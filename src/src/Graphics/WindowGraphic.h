@@ -8,7 +8,7 @@ class CWidget;
 class CWindowGraphic : public QMainWindow
 {
 public:
-        enum EType
+    enum EType
     {
         menu,
         game

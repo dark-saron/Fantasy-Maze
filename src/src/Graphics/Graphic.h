@@ -5,13 +5,13 @@
 #include "src/Graphics/CharactereGraphic.h"
 #include "src/Data/CharactereWorld.h"
 #include "src/Data/Direction.h"
-#include "src/Graphics/Widget.h"
 #include "src/Graphics/WindowGraphic.h"
 
-#include <QtGui/QApplication>
 #include <QObject>
 
-class CGraphic : public QObject
+class QApplication;
+
+class CGraphic : private QObject
 {
 Q_OBJECT
 public:
@@ -29,10 +29,12 @@ public:
     void Exit();
 
      //singleton functions
-    static void CreateInstance();
+    static void CreateInstance(int argc, char* argv[]);
     static CGraphic& GetInstance();
     static void DestroyInstance();
     static bool IsValid();
+
+
 
 signals:
   void DoDraw();
@@ -54,7 +56,6 @@ private:
     CGraphic();
     CGraphic(int argc, char** argv);
     ~CGraphic();
-
     static CGraphic* _singleton;
 };
 

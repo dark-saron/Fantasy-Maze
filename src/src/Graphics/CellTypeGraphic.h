@@ -1,10 +1,8 @@
 #pragma once
 
 #include "src/Graphics/GraphicEntity.h"
-
 #include "src/Data/CellTypeWorld.h"
 
-#include <QLabel>
 #include <QPixmap>
 
 

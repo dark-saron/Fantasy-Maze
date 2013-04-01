@@ -80,7 +80,6 @@ void CWindowGraphic::Draw()
 // Gets Key Event and sets Player Input
 void CWindowGraphic::keyPressEvent(QKeyEvent *key)
 {
-    CConnector& connector = CConnector::GetInstance();
     SDirection::EType input0 = SDirection::none;
     SDirection::EType input1 = SDirection::none;
 

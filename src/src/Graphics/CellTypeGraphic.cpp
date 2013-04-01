@@ -1,6 +1,10 @@
 #include "CellTypeGraphic.h"
-#include "Graphic.h"
+
+#include "GraphicEntity.h"
+
+#include <QPixmap>
 #include <assert.h>
+#include "Graphic.h"
 
 CCellTypeGraphic::CCellTypeGraphic()
 {

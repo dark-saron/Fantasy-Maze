@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'GameWidget.ui'
 **
-** Created: Fri 29. Mar 14:55:55 2013
+** Created: Sat Mar 30 21:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

@@ -14,8 +14,6 @@
 
 CLogic::CLogic()
       : _npcs(std::list<CMonsterAI*>()),
-        _cellTrash(std::list<CCellTypeLogic*>()),
-        _charTrash(std::list<CCharactereLogic*>()),
         _exit(false)
 {
     for (int player = 0; player < MAX_PLAYERS; ++player)
@@ -59,12 +57,10 @@ void CLogic::ClearCellTypes()
 {
     CWorldEntity* cellTypeWorld = CDungeon::GetInstance().GetAllCellTypes();
     CWorldEntity* next;
-    CWorldEntity* prev;
 
     while (cellTypeWorld)
     {
         next = cellTypeWorld->GetNext();
-        prev = cellTypeWorld->GetPrev();
 
         CCellTypeLogic* cellLogic = static_cast<CCellTypeLogic*> (cellTypeWorld->GetLogicEntity());
         MoveToTrash(*cellLogic);
@@ -114,7 +110,7 @@ CLogic::~CLogic()
 void CLogic::ClearTrash()
 {
     CCellTypeLogic* cellLogic;
-    std::list<CCellTypeLogic*>::const_iterator it1 = _cellTrash.begin(); 
+    std::list<CCellTypeLogic*>::iterator it1 = _cellTrash.begin();
     
     while(it1 != _cellTrash.end())
     {
@@ -129,7 +125,7 @@ void CLogic::ClearTrash()
     }
 
     CCharactereLogic* charLogic;
-    std::list<CCharactereLogic*>::const_iterator it2 = _charTrash.begin(); 
+    std::list<CCharactereLogic*>::iterator it2 = _charTrash.begin();
     
     while(it2 != _charTrash.end())
     {
@@ -164,7 +160,7 @@ void CLogic::RemoveDeadEntities()
         }
     }
 
-    std::list<CMonsterAI*>::const_iterator it = _npcs.begin(); 
+    std::list<CMonsterAI*>::iterator it = _npcs.begin();
     while(it != _npcs.end())
     {
         charLogic  = &(*it)->GetCharactere();

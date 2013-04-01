@@ -8,68 +8,75 @@ message("You are running qmake on a generated .pro file. This may not work!")
 
 
 HEADERS += ./resource.h \
-    ./CellTypeLogic.h \
-    ./CharactereLogic.h \
-    ./Logic.h \
-    ./LogicEntity.h \
-    ./Player.h \
-    ./CellTypeWorld.h \
-    ./CharactereWorld.h \
-    ./Dungeon.h \
-    ./Region.h \
-    ./CharIterator.h \
-    ./UserInput.h \
-    ./WorldEntity.h \
-    ./CellTypeGraphic.h \
-    ./GraphicEntity.h \
-    ./StatsGraphic.h \
-    ./MenuGraphic.h \
-    ./DungeonGraphic.h \
-    ./Graphic.h \
-    ./WindowGraphic.h \
-    ./Widget.h \
-    ./MonsterAI.h \
-    ./Application.h \
-    ./GamePhase.h \
-    ./MenuPhase.h \
-    ./Phase.h \
-    ./2DPosition.h \
-    ./Config.h \
-    ./helper.h \
-    ./Thread.h \
-    ./JSON/elements.h \
-    ./JSON/reader.h \
-    ./JSON/visitor.h \
-    ./JSON/writer.h
-SOURCES += ./CellTypeLogic.cpp \
-    ./CharactereLogic.cpp \
-    ./Logic.cpp \
-    ./LogicEntity.cpp \
-    ./Player.cpp \
-    ./CellTypeWorld.cpp \
-    ./CharactereWorld.cpp \
-    ./Dungeon.cpp \
-    ./Region.cpp \
-    ./CharIterator.cpp \
-    ./WorldEntity.cpp \
-    ./CellTypeGraphic.cpp \
-    ./GraphicEntity.cpp \
-    ./MenuGraphic.cpp \
-    ./DungeonGraphic.cpp \
-    ./Graphic.cpp \
-    ./StatsGraphic.cpp \
-    ./WindowGraphic.cpp \
-    ./MonsterAI.cpp \
-    ./Application.cpp \
-    ./GamePhase.cpp \
-    ./main.cpp \
-    ./MenuPhase.cpp \
-    ./Config.cpp \
-    ./2DPosition.cpp \
-    ./helper.cpp \
-    ./Thread.cpp
-FORMS += ./DungeonWidget.ui \
-    ./StatWidget.ui \
-    ./MainWidget.ui \
-    ./MenuWidget.ui
+    ./src/Logic/CellTypeLogic.h \
+    ./src/Logic/CharactereLogic.h \
+    ./src/Logic/Logic.h \
+    ./src/Logic/LogicEntity.h \
+    ./src/Logic/Player.h \
+    ./src/Data/Direction.h \
+    ./src/Data/CellTypeWorld.h \
+    ./src/Data/CharactereWorld.h \
+    ./src/Data/Dungeon.h \
+    ./src/Data/Region.h \
+    ./src/Data/WorldIterator.h \
+    ./src/Data/WorldEntity.h \
+    ./src/Graphics/CellTypeGraphic.h \
+    ./src/Graphics/CharactereGraphic.h \
+    ./src/Graphics/Connector.h \
+    ./src/Graphics/GameGraphic.h \
+    ./src/Graphics/GraphicEntity.h \
+    ./src/Graphics/StatsGraphic.h \
+    ./src/Graphics/MenuGraphic.h \
+    ./src/Graphics/DungeonGraphic.h \
+    ./src/Graphics/Graphic.h \
+    ./src/Graphics/WindowGraphic.h \
+    ./src/Graphics/Widget.h \
+    ./src/AI/MonsterAI.h \
+    ./src/App/Application.h \
+    ./src/App/Config.h \
+    ./src/App/GamePhase.h \
+    ./src/App/MenuPhase.h \
+    ./src/App/Phase.h \
+    ./src/Core/2DPosition.h \
+    ./src/Core/Random.h \
+    ./src/Core/Thread.h \
+    ./src/Extern/json/elements.h \
+    ./src/Extern/json/reader.h \
+    ./src/Extern/json/visitor.h \
+    ./src/Extern/json/writer.h
+SOURCES += ./src/Logic/CellTypeLogic.cpp \
+    ./src/Logic/CharactereLogic.cpp \
+    ./src/Logic/Logic.cpp \
+    ./src/Logic/LogicEntity.cpp \
+    ./src/Logic/Player.cpp \
+    ./src/Data/CellTypeWorld.cpp \
+    ./src/Data/CharactereWorld.cpp \
+    ./src/Data/Dungeon.cpp \
+    ./src/Data/Region.cpp \
+    ./src/Data/WorldIterator.cpp \
+    ./src/Data/WorldEntity.cpp \
+    ./src/Graphics/CellTypeGraphic.cpp \
+    ./src/Graphics/CharactereGraphic.cpp \
+    ./src/Graphics/Connector.cpp \
+    ./src/Graphics/GameGraphic.cpp \
+    ./src/Graphics/GraphicEntity.cpp \
+    ./src/Graphics/MenuGraphic.cpp \
+    ./src/Graphics/DungeonGraphic.cpp \
+    ./src/Graphics/Graphic.cpp \
+    ./src/Graphics/StatsGraphic.cpp \
+    ./src/Graphics/WindowGraphic.cpp \
+    ./src/AI/MonsterAI.cpp \
+    ./src/App/Config.cpp \
+    ./src/App/Application.cpp \
+    ./src/App/GamePhase.cpp \
+    ./src/App/main.cpp \
+    ./src/App/MenuPhase.cpp \
+    ./src/Core/Random.cpp \
+    ./src/Core/Thread.cpp
+FORMS += "./Form Files/DungeonWidget.ui" \
+    "./Form Files/GameWidget.ui" \
+    "./Form Files/StatWidget.ui" \
+    "./Form Files/MainWidget.ui" \
+    "./Form Files/MenuWidget.ui"
+TRANSLATIONS += ./prototype_fantasy_maze_de.ts
 RESOURCES += prototype_fantasy_maze.qrc

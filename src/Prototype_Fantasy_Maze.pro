@@ -4,23 +4,18 @@
 
 TEMPLATE = app
 TARGET = Prototype_Fantasy_Maze
-DESTDIR = ../Win32/Debug
-QT += core gui multimedia sql network xml script xmlpatterns scripttools 3support phonon webkit svg declarative opengl qaxserver qaxcontainer uitools
-CONFIG += qtestlib help debug console qaxserver
-DEFINES += QT_LARGEFILE_SUPPORT QT_DLL QT_OPENGL_LIB QT_NETWORK_LIB QT_SCRIPT_LIB QT_MULTIMEDIA_LIB QT_SQL_LIB QT_QT3SUPPORT_LIB QT3_SUPPORT QT_XML_LIB QT_SVG_LIB QT_WEBKIT_LIB QT_XMLPATTERNS_LIB QAXSERVER QT_PHONON_LIB QT_DECLARATIVE_LIB QT_SCRIPTTOOLS_LIB
+DESTDIR = ./Win32/Debug
+QT += core gui network xml webkit svg declarative
+CONFIG += qtestlib help debug console
+DEFINES += QT_LARGEFILE_SUPPORT QT_DLL QT_OPENGL_LIB QT_NETWORK_LIB QT_SQL_LIB QT_XML_LIB QT_SVG_LIB QT_WEBKIT_LIB QT_XMLPATTERNS_LIB QT_DECLARATIVE_LIB
 INCLUDEPATH += ./GeneratedFiles \
     . \
     ./GeneratedFiles/Debug
-LIBS += -lopengl32 \
-    -lglu32 \
-    -lcomdlg32 \
-    -lQAxServerd \
-    -lphonond4
-PRECOMPILED_HEADER = StdAfx.h
 DEPENDPATH += .
 MOC_DIR += ./GeneratedFiles/debug
 OBJECTS_DIR += debug
 UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
 include(Prototype_Fantasy_Maze.pri)
+TRANSLATIONS += prototype_fantasy_maze_de.ts
 win32:RC_FILE = Prototype_Fantasy_Maze.rc
