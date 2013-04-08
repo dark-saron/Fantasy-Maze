@@ -1,3 +1,3 @@
 Fantasy-Maze
 ============
-test
+Hallo! :-)
