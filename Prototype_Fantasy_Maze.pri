@@ -40,10 +40,10 @@ HEADERS += ./resource.h \
     ./src/Core/2DPosition.h \
     ./src/Core/Random.h \
     ./src/Core/Thread.h \
-    ./src/Extern/json/elements.h \
-    ./src/Extern/json/reader.h \
-    ./src/Extern/json/visitor.h \
-    ./src/Extern/json/writer.h
+    ./src/Extern/JSON/elements.h \
+    ./src/Extern/JSON/reader.h \
+    ./src/Extern/JSON/visitor.h \
+    ./src/Extern/JSON/writer.h
 SOURCES += ./src/Logic/CellTypeLogic.cpp \
     ./src/Logic/CharactereLogic.cpp \
     ./src/Logic/Logic.cpp \
@@ -73,10 +73,10 @@ SOURCES += ./src/Logic/CellTypeLogic.cpp \
     ./src/App/MenuPhase.cpp \
     ./src/Core/Random.cpp \
     ./src/Core/Thread.cpp
-FORMS += "./Form Files/DungeonWidget.ui" \
-    "./Form Files/GameWidget.ui" \
-    "./Form Files/StatWidget.ui" \
-    "./Form Files/MainWidget.ui" \
-    "./Form Files/MenuWidget.ui"
+FORMS += ./Form Files/DungeonWidget.ui \
+    ./Form Files/GameWidget.ui \
+    ./Form Files/StatWidget.ui \
+    ./Form Files/MainWidget.ui \
+    ./Form Files/MenuWidget.ui
 TRANSLATIONS += ./prototype_fantasy_maze_de.ts
 RESOURCES += prototype_fantasy_maze.qrc
